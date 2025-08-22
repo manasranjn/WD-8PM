@@ -1,0 +1,115 @@
+.grid {
+    background-color: brown;
+    height: 600px;
+    display: grid;
+    /* grid-template-columns: 200px 150px 200px 300px; */
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-columns: 2fr 1fr 1fr 1fr; */
+    /* grid-template-rows: 110px 200px 200px; */
+    grid-template-rows: repeat(4, 1fr);
+    /* gap: 20px; */
+    grid-gap: 30px;
+}
+
+.item {
+    background-color: green;
+    height: 100%;
+    width: 100%;
+    color: white;
+    font-size: 30px;
+}
+
+#one {
+    grid-row: span 2;
+}
+
+#three {
+    grid-column: span 2;
+}
+
+#eight {
+    grid-column: span 3;
+}
+
+.pixel {
+    height: 400px;
+    width: 700px;
+    background-color: blueviolet;
+}
+
+.percentage {
+    height: 400px;
+    width: 60%;
+    background-color: green;
+    /* position: relative; */
+}
+
+.box {
+    height: 80vh;
+    /* width: 70vw; */
+    width: 70vmax;
+    background-color: midnightblue;
+    color: white;
+}
+
+
+.container {
+    font-size: 15px;
+}
+
+#head {
+    font-size: 4em;
+}
+
+#heading {
+    font-size: 5rem;
+}
+
+.static {
+    background-color: red;
+    height: 200px;
+    width: 200px;
+    top: 20px;
+    left: 100px;
+}
+
+.relative {
+    background-color: green;
+    height: 200px;
+    width: 200px;
+    position: relative;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+}
+
+.absolute {
+    background-color: blue;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 50px;
+    /* right: 20px; */
+    z-index: 1;
+}
+
+.fixed {
+    background-color: yellow;
+    height: 200px;
+    width: 200px;
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    z-index: 1;
+}
+
+.sticky {
+    background-color: black;
+    height: 200px;
+    width: 200px;
+    color: white;
+    position: sticky;
+    top: 0px;
+    left: 20px;
+    z-index: 1;
+}
