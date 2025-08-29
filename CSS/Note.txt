@@ -225,3 +225,22 @@ transition-timing-function: ease-in/ease-out/linear/steps(5)
 transition-delay: 2s/3s/10s ...etc
 (or)
 transition: property-name duration timing-function delay
+
+# CSS Animations:- Used to animate transitions between CSS styles using keyframes.
+-To create animation we need keyframes.
+
+## CSS Keyframes:- @keyframes define the behavior of an animation sequence by specifying styles at various points.
+Syntax:-
+@keyframes animation-name {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+Animation Properties:-
+animation-name, animation-duration, animation-delay, animation-iteration-count, animation-timing-function, animation-direction
+(or- short-hand)
+animation: name duration iteration timing-function delay;
