@@ -62,3 +62,7 @@ let arr2 = text.split(" ")
 
 let arr3 = text.split("")
 // console.log(arr3);
+
+
+// let a = prompt("Enter Your name")
+// console.log(a);
