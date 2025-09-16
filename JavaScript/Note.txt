@@ -407,3 +407,16 @@ Syntax:- document.querySelector("selector")
 6. querySelectorAll():- It is used to select and return the collection fo Nodes or elements using CSS selector mechanism. (.className, #idName, tagName)
 -It selects all the nodes that matches the specified selector.
 Syntax:- document.querySelectorAll("selector")
+
+## Attribute Manipulation:- 
+-getAttribute(attr): Retrieves the value of the specified attribute from an element.
+-setAttribute(attr, value): Sets or updates the value of a specified attribute on an element.
+
+##Delete element:-
+-node.remove() -> remove/delete the node
+
+##Insert Element :-
+-node.append(ele) -> adds at the end of node (inside)
+-node.prepend(ele) -> adds at the start of node (inside)
+-node.after(ele) -> adds after the node (outside)
+-node.before(ele) -> adds before the node (outside)
