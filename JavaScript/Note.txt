@@ -420,3 +420,25 @@ Syntax:- document.querySelectorAll("selector")
 -node.prepend(ele) -> adds at the start of node (inside)
 -node.after(ele) -> adds after the node (outside)
 -node.before(ele) -> adds before the node (outside)
+
+# Prompt in JavaScript:-
+-prompt() is a built-in function that allows users to input text.
+-It displays a dialog box with an optional message and an input field.
+-e.g:- let userName = prompt("Enter your name:");
+console.log("Hello, " + userName);
+
+# Alert in JavaScript:- 
+-alert() is a built-in function used to display messages in a pop-up box.
+-It pauses script execution until the user closes the alert.
+-Useful for notifications or warnings.
+-e.g:- alert("This is an alert message!");
+
+# Event in Javascript :-
+-The change in the state of an object is known as event.
+-Events in JavaScript allow us to interact with web pages dynamically.
+-Events are interactions that occur within a webpage.
+## Types of Events:-
+-Mouse Events: click, dblclick, mousedown, mouseup, mouseover, mouseout,...
+-Keyboard Events: keydown, keypress, keyup,...
+-Form Events: submit, change, focus, blur,...
+-Window Events: load, resize, scroll,...
