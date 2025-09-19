@@ -442,3 +442,19 @@ console.log("Hello, " + userName);
 -Keyboard Events: keydown, keypress, keyup,...
 -Form Events: submit, change, focus, blur,...
 -Window Events: load, resize, scroll,...
+
+# Event Hnadling in JavaScript:-
+-JavaScript allows us to respond to user actions like clicks, key presses, and mouse movements through event handling.
+-Event handlers are functions that execute when an event occurs.
+Syntax:- node.eventHandler = () => { // handle here }
+
+## Event Object in JavaScript:-
+The Event Object is a special object in JavaScript that contains details about an event that occurs, such as a button click, mouse movement, or keyboard press. 
+-All event handlers have access to the event object, which provides various properties and methods.
+Syntax:
+node.event = (e) => {
+// handle event here
+}
+-Some common properties of Event Object (`e`):
+- 'e.target' :- Refers to the element that triggered the event.
+- 'e.type' :- Returns the type of the event (e.g., "click", "keydown").
