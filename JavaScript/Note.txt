@@ -583,7 +583,7 @@ The Fetch() method is used to fetch a data.
 syntax :- let promise = fetch(URL)
 
 # Async & Await in Javascript :-
-async function always returns a promise.
+async function  always returns a promise.
 syntax :- async function myFunc(){ // statement }
 Note :- await pauses the execution of its surrounding async function until the promise is settled.
 
