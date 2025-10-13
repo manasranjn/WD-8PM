@@ -84,7 +84,7 @@ Q. What is Single-page Application ?
 - npm run dev
 
 - After installation of react-project, we will be getting some default folders and files.
-  Now we have to maintain two important files in "src" folder - index.js(main.jsx) and App.jsx.
+  Now we have to maintain two important files in "src" folder - index.js(main.jsx) and App.js/App.jsx.
 
 1. index.js(main.jsx) :
 - It is considered as a root file of react.js project.
