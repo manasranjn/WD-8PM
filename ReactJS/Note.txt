@@ -70,3 +70,160 @@ Q. What is Single-page Application ?
   <h1> This is heading 1</h1>
   <h1> This is heading 2</h1>
   </div>
+
+# React Project Setup
+## Using CRA(create-react-app)
+- npx create-react-app <project-name>
+- cd <project-name>
+- npm start (or) npm run start
+
+## Using Vite
+- npm create vite@latest <project-name>
+- cd <project-name>
+- npm install
+- npm run dev
+
+- After installation of react-project, we will be getting some default folders and files.
+  Now we have to maintain two important files in "src" folder - index.js(main.jsx) and App.jsx.
+
+1. index.js(main.jsx) :
+- It is considered as a root file of react.js project.
+- We are using this file to create root between index.html and App.jsx.
+
+2. App.jsx :
+- It is considered as parent component of react.js project.
+- It is a component where we are going to write our codes.
+
+index.js(main.jsx) :
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import { StrictMode } from "react";
+
+const root = createRoot(document.getElementById("root"));
+root.render(
+<StrictMode>
+<App />
+</StrictMode>
+);
+
+App.jsx :
+import React from "react";
+
+const App = () => {
+return (
+
+<div>
+<h1>App Component</h1>
+</div>
+);
+};
+
+export default App;
+
+- After installation setup we have to create a new folder named "Components" inside "src" folder.
+- After creating "Components" folder, "App" component will be called as parent component.
+- Whatever component we create inside "Components" folder will be called as child component.
+  e.g:- Navbar.jsx, Footer.jsx, Content.jsx
+  Navbar.jsx :
+  import React from "react";
+  const Navbar = () => {
+  return (
+  <div>
+  <h1>Navbar</h1>
+  </div>
+  );
+  };
+
+export default Navbar;
+
+Content.jsx :
+import React from "react";
+
+const Content = () => {
+return (
+
+<div>
+<h1>Content </h1>
+</div>
+);
+};
+export default Content;
+
+Footer.jsx :
+import React from "react";
+const Footer = () => {
+return (
+
+<div>
+<h1>Footer</h1>
+</div>
+);
+};
+
+export default Footer;
+
+App.jsx :
+import React from "react";
+import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
+import Content from "./Components/Content";
+
+const App = () => {
+return (
+
+<div>
+<Navbar />
+<h1>App Component</h1>
+<Content />
+<Footer />
+</div>
+);
+};
+
+export default App;
+
+## Types of Components
+- There are 2 types of components in react.
+  1. Class Based Component
+  2. Functional Component or Function Based Component
+
+# Difference between Class Component and Functional Component
+- Class Component :-
+  - Use class keyword and class name
+  - Statefull
+  - It has no Hooks
+  - It has lifecycle methods
+  - It use render() method
+  - Syntax:
+    import React from "react";
+    import { Component } from "react";
+
+class ClassComponentName extends Component {
+render() {
+return (
+
+<div>
+<h1>Class Component</h1>
+</div>
+);
+}
+}
+export default ClassComponent;
+
+- Functional Component :-
+  - Use function keyword and function name
+  - Stateless
+  - It has Hooks
+  - It doesn't have lifecycle methods
+  - It doesn't use render() method
+  - Syntax:
+    import React from "react";
+    const Navbar = () => {
+    return (
+    <div>
+    <h1>Navbar</h1>
+    </div>
+    );
+    };
+
+export default Navbar;
