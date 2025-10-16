@@ -227,3 +227,143 @@ export default ClassComponent;
     };
 
 export default Navbar;
+
+# Props
+- Props are inbuilt features of react.
+- Props are used to pass data from parent to child component.
+- Props are immutable, it means once the value is passed from parent component, it can't be changed.
+- Props are uni-directional.
+
+e.g :-
+- Write a program to send a string data as props.
+  App.jsx :
+  import React from "react";
+  import Content from "./Components/Content";
+
+const App = () => {
+return (
+
+<div>
+<Content name="Rahul" />
+</div>
+);
+};
+
+export default App;
+
+Content.jsx :
+import React from "react";
+const Content = (props) => {
+return (
+
+<div>
+<h1>{props.name}</h1>
+</div>
+);
+};
+export default Content;
+
+- Write a program to send an array as props.
+  App.jsx :
+  import React from "react";
+  import Content from "./Components/Content";
+
+const App = () => {
+return (
+
+<div>
+<Content mark={[1, 2, 3, 4, 5]} />
+</div>
+)
+};
+
+export default App;
+
+Content.jsx :
+import React from "react";
+const Content = ({mark}) => {
+return (
+
+<div>
+<h1>
+      Mark: 
+        {mark.map((item) => (
+          <p>{item}</p>
+        ))}
+      </h1>
+</div>
+);
+};
+export default Content;
+
+- Write a program to send an object as props.
+  App.jsx :
+  import React from "react";
+  import Content from "./Components/Content";
+
+const App = () => {
+return (
+
+<div>
+<Content name={{ firstName: "Rahul", lastName: "Gupta" }} />
+</div>
+);
+};
+
+export default App;
+
+Content.jsx :
+import React from "react";
+const Content = (props) => {
+return (
+
+<div>
+<h1>{props.name.firstName}</h1>
+<h1>{props.name.lastName}</h1>
+</div>
+);
+};
+export default Content;
+
+# Props Drilling
+
+- It is a process by which we can pass the data from one part of the react component tree to another by going through other parts that does not need the data but only help in passing it around.
+  e.g : App -> Content -> SubContent
+
+Example:-
+import React from "react";
+import Content from "./Components/Content";
+const App = () => {
+return (
+
+<div>
+<Content name="Nikita" course="B.Tech" place="Cuttack" />
+</div>
+)}
+export default App;
+
+Content.jsx :
+import React from "react";
+import SubContent from "./Components/SubContent";
+const Content = (props) => {
+return (
+
+<div>
+<h1>SubContent Component</h1>
+<SubContent name={props.name} course={props.course} place={props.place} />
+</div>
+)};
+export default Content;
+
+SubContent.jsx :
+import React from "react";
+const SubContent = (props) => {
+return (
+
+<div>
+<h1>{props.name}</h1>
+<h1>{props.course}</h1>
+<h1>{props.place}</h1>
+</div>
+)}
+export default SubContent;
