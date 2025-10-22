@@ -453,3 +453,21 @@ Reset
 };
 
 export default Counter;
+
+# Types of CSS in React:
+1. Inline CSS :
+- It is an tyoe of css where we will be applying for individually inside one particular tag using style attribute.
+- The CSS properties should be writen in camelCase inside an expression like style={{ color: "red" }} in the form of Object inside the style attribute of the tag.
+
+2. Style Object :
+- In style object we write the styles in a object, which written outside the JSX and inside the same component.
+
+3. Global CSS :
+- It is a type of CSS where we will be maintaining one CSS file for the entire react project.
+- It will target all the Components in the project.
+- We have to create a separate CSS file inside the "src" folder with an extension of ".css" and import it in the parent component "App.jsx".
+
+4. Module CSS :
+- It is a type of CSS where we will be maintaining one CSS file for each component.
+- Whenever we are using module CSS, we have to create a separate CSS file for each component with an extension of ".module.css" and import it in the component.
+e.g : filename.module.css
