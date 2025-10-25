@@ -17,18 +17,16 @@ const SideEffect = () => {
     getData();
   }, []);
 
-  console.log(allPosts);
+  // console.log(allPosts);
 
   return (
     <div>
-      {allPosts.map((post) => {
-        return (
-          <div key={post.id}>
-            <h1>{post.title}</h1>
-            <p>{post.body}</p>
-          </div>
-        );
-      })}
+      {allPosts.map((post, idx) => (
+        <div key={idx}>
+          <h1>{post.title}</h1>
+          <p>{post.body}</p>
+        </div>
+      ))}
     </div>
   );
 };

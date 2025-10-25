@@ -522,3 +522,29 @@ export default UserData;
   - No dependency :- useEffect(() => {})
   - Empty dependency :- useEffect(() => {}, [])
   - Value dependency :- useEffect(() => {}, [value])
+
+# Reference in React:
+- It is a inbuilt object in React.
+- It is used to target elements in react.
+- By default it will be having key-value pair of "current: undefined".
+- ref will always uses Real DOM.
+- In Functional Component, we have to use useRef() Hook to create reference.
+- e.g: const inputRef = useRef();
+
+example:-
+import React, { useRef } from "react";
+
+const Reference = () => {
+const reference = useRef();
+console.log(reference); // {current: undefined}
+let changeColor = () => {
+reference.current.style.color = "red";
+}
+return(
+
+  <div>
+    <h1 ref={reference}>Reference</h1>
+    <button onClick={changeColor}>Click</button>
+  </div>
+)}
+export default Reference
