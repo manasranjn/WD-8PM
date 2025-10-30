@@ -548,3 +548,88 @@ return(
   </div>
 )}
 export default Reference
+
+# Form Handling in React:
+1. Uncontrolled Forms
+2. Controlled Forms
+
+## UnControlled Forms
+- It is a form where it is created using reference concept.
+- In Functional components, we have to use useRef() Hook to create uncontrolled form.
+- These forms are completely handled by DOM itself.
+- Suppose if we have to take input from user, first the data will be taken by DOM and then we will be taking the data from DOM.
+
+example:-
+import React, { useRef } from "react";
+
+const UncontrolledForm = () => {
+const fName = useRef();
+const lName = useRef();
+
+const handleSubmit = (e) => {
+e.preventDefault();
+const name = {
+firstName: fName.current.value,
+lastName: lName.current.value,
+};
+console.log(name);
+};
+
+return (
+
+<form>
+<input type="text" placeholder="First Name" ref={fName} />
+<input type="text" placeholder="Last Name" ref={lName} />
+<button onClick={handleSubmit}> Submit </button>
+</form>
+)};
+export default UncontrolledForm;
+
+## Controlled Form
+- Thse forms are created using states in React.
+- In functional component we use useState() to create controlled forms.
+- These Forms are completely handled by developers where we will be taking the data from the users by using "onChange" event.
+  example:-
+  import React, { useState } from "react";
+
+const ControlledForm = () => {
+const [name, setName] = useState("");
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+
+const getName = (e) => {
+setName(e.target.value);
+};
+const getEmail = (e) => {
+setEmail(e.target.value);
+};
+const submitData = (e) => {
+e.preventDefault();
+let data = {
+name: name,
+email: email,
+password: password,
+};
+console.log(data);
+setEmail("");
+setName("");
+setPassword("");
+};
+return (
+
+<form>
+<label>Name: </label>
+<input type="text" value={name} onChange={getName} /> <br />
+<label>Email: </label>
+<input type="email" value={email} onChange={getEmail} /> <br />
+<label>Password: </label>
+<input
+type="password"
+value={password}
+onChange={(e) => setPassword(e.target.value)}
+/>
+<br />
+<button onClick={submitData}>Submit</button>
+</form>
+)};
+export default ControlledForm;
