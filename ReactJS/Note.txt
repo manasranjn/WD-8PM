@@ -633,3 +633,13 @@ onChange={(e) => setPassword(e.target.value)}
 </form>
 )};
 export default ControlledForm;
+
+# useContext():-
+- Context is a way to share data between components without having to pass props down the component tree.
+- useContext() is a hook that allows you to consume context values in your functional components.
+- To create a context, use the createContext() method. This returns a Context object that can be used to provide and consume values.
+- To provide a value to a child component, use the "Context.Provider" component. This component accepts a value prop that is passed down to child components.
+- To consume a value in a child component, use the useContext() hook. This hook takes a Context object as its argument and returns the current value of the context.
+- We can use multiple context values in a single component by nesting
+  Context.Provider components.
+- Overuse of context can make our code harder to understand and maintain.
