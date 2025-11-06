@@ -1,0 +1,30 @@
+{
+  "posts": [
+
+    {
+      "id": "0439",
+      "title": "Creating a Safer, Sustainable",
+      "description": "As the go-to engineering partner for today's innovation leaders and technology entrepreneurs, TE Connectivity is helping solve tomorrow's toughest challenges with advanced connectivity and sensors solutions."
+    },
+    {
+      "id": "65d5",
+      "title": "Realme UI 7.0: Full list of eligible phones",
+      "description": "Following in the footsteps of OnePlus and Oppo, Realme has announced Realme UI 7.0, its latest software version based on Android 16. Like OxygenOS, Realme’s newest operating system brings numerous visual as well as under-the-hood changes. From new features to rollout schedule, here’s a quick look at what’s new with Realme UI 7.0."
+    },
+    {
+      "id": "c886",
+      "title": "Dell’s Alienware 18 Area-51 gaming laptop",
+      "description": "What fascinates me about the Alienware 18 Area-51 is how an 18-inch laptop manages to hide a full desktop computer beneath its surface. It’s nothing like the laptops I have used in recent months, which keep getting thinner (and are now practically joined by ultra-thin smartphones)."
+    },
+    {
+      "id": "2a1c",
+      "title": "What fascinates me about the Alienware 18 Area-51",
+      "description": "What fascinates me about the Alienware 18 Area-51 is how an 18-inch laptop manages to hide a full desktop computer beneath its surface. It’s nothing like the laptops I have used in recent months, which keep getting thinner (and are now practically joined by ultra-thin smartphones)."
+    },
+    {
+      "id": "f57a",
+      "title": "new post",
+      "description": "description"
+    }
+  ]
+}
