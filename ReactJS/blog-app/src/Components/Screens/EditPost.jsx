@@ -1,6 +1,46 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditPost = () => {
+  const params = useParams();
+  const postId = params.id;
+  const navigate = useNavigate();
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
+  const getData = () => {
+    axios
+      .get(`http://localhost:5000/posts/${postId}`)
+      .then((response) => {
+        console.log(response.data);
+        setTitle(response.data.title);
+        setDescription(response.data.description);
+      })
+      .catch((error) => {
+        console.error("Error fetching post details:", error);
+      });
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const updatedPost = { title, description };
+    axios
+      .put(`http://localhost:5000/posts/${postId}`, updatedPost)
+      .then((response) => {
+        console.log("Post updated successfully:", response.data);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Error updating post:", error);
+      });
+  };
+
+  useEffect(() => {
+    getData();
+  }, [postId]);
+
   return (
     <div className="p-5 md:p-10 lg:p-20 flex justify-center items-center h-[90vh]">
       <form className="bg-[#11224E] p-5 lg:p-8 rounded-lg shadow-lg flex flex-col gap-4 w-xl">
@@ -11,12 +51,20 @@ const EditPost = () => {
           type="text"
           placeholder="Enter the Blog title"
           className="bg-white p-2 rounded outline-none border-none"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <textarea
           placeholder="Enter the Blog description"
           className="bg-white p-2 rounded outline-none border-none"
+          rows={5}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         ></textarea>
-        <button className="px-3 py-1 md:px-4 md:py-2 lg:px-5 bg-green-500 rounded-lg cursor-pointer active:scale-95 transition duration-200 active:bg-green-600 hover:bg-green-400 text-white">
+        <button
+          className="px-3 py-1 md:px-4 md:py-2 lg:px-5 bg-green-500 rounded-lg cursor-pointer active:scale-95 transition duration-200 active:bg-green-600 hover:bg-green-400 text-white"
+          onClick={handleUpdate}
+        >
           Update Post
         </button>
       </form>
