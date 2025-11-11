@@ -12,12 +12,13 @@ const Home = () => {
       .get("http://localhost:5000/posts")
       .then((res) => {
         setAllPosts(res.data);
-        console.log(res.data);
+        // console.log(res.data);
         setMessage("");
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        // console.log(err);
         setMessage("Error retrieving data");
+        setAllPosts([]);
       });
   };
 
@@ -51,24 +52,26 @@ const Home = () => {
             {post.title}
           </h2>
           <p className="text-gray-700 mb-2 text-sm md:text-base">
-            {post.description.slice(0, 150)}
-            <span
-              className="text-blue-800 underline cursor-pointer"
-              onClick={() => navigate(`/post-details/${post.id}`)}
-            >
-              read more
-            </span>
+            {post.description.slice(0, 150)}{" "}
+            {post.description.length > 150 && (
+              <span
+                className="text-blue-800 underline cursor-pointer"
+                onClick={() => navigate(`/post-details/${post.id}`)}
+              >
+                ...read more
+              </span>
+            )}
           </p>
 
           <div className="flex justify-between absolute bottom-3 w-[90%] mt-4">
             <button
-              className="bg-blue-500 text-white px-4 py-2 rounded"
+              className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer"
               onClick={() => navigate(`/edit-post/${post.id}`)}
             >
               Edit
             </button>
             <button
-              className="bg-red-500 text-white px-4 py-2 rounded"
+              className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer"
               onClick={() => handleDelete(post.id)}
             >
               Delete
