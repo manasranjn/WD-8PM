@@ -3,6 +3,7 @@ import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
 import Footer from "./Components/Footer";
 import Projects from "./Components/Projects";
+import Contact from "./Components/Contact";
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <Navbar />
       <Hero />
       <Projects />
+      <Contact />
       <Footer />
     </Fragment>
   );
