@@ -30,7 +30,7 @@ const FoodModal = ({ food, onClose }) => {
           />
           <button
             onClick={onClose}
-            className="absolute top-3 right-3 bg-black/60 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg"
+            className="absolute top-3 right-3 bg-black/60 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg cursor-pointer"
           >
             ✕
           </button>

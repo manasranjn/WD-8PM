@@ -9,6 +9,7 @@ const CategoryFilter = ({ categories, selectedCategory, onSelectCategory }) => {
       <div className="flex flex-wrap gap-3">
         {categories.map((cat) => (
           <button
+            data-aos="zoom-in-up"
             key={cat}
             onClick={() => onSelectCategory(cat)}
             className={`px-4 py-2 rounded-full text-sm font-medium border transition

@@ -5,6 +5,7 @@ const FoodCard = ({ food, onClick }) => {
     <div
       className="bg-gray-900/70 rounded-2xl overflow-hidden border border-gray-800 shadow hover:shadow-lg cursor-pointer transition transform hover:-translate-y-1"
       onClick={() => onClick(food)}
+      data-aos="zoom-in-up"
     >
       <div className="h-40 w-full overflow-hidden">
         <img
