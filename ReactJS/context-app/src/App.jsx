@@ -1,5 +1,6 @@
 import React, { createContext } from "react";
 import AllStudents from "./Components/AllStudents.jsx";
+import Example from "./Components/Example.jsx";
 
 export const student = createContext();
 
@@ -13,6 +14,8 @@ const App = () => {
       >
         <AllStudents />
       </student.Provider>
+
+      <Example />
     </div>
   );
 };
