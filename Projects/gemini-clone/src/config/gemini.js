@@ -13,6 +13,7 @@ async function runChat(prompt) {
   const genAI = new GoogleGenerativeAI(API_KEY);
   const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
+
   const generationConfig = {
     temperature: 0.75,
     topK: 1,
