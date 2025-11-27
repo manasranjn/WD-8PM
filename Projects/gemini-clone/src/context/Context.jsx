@@ -41,7 +41,7 @@ const ContextProvider = (props) => {
         newArray += "<b>" + responseArray[i] + "</b>";
       }
     }
-    console.log(newArray);
+    // console.log(newArray);
     responseArray = newArray.split("*").join("</br>").split(" ");
     for (let i = 0; i < responseArray.length; i++) {
       const nextWord = responseArray[i];
