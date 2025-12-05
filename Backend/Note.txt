@@ -1,0 +1,51 @@
+What is Backend Development ?
+-Backend Development is the part of web development that focuses on creating and managing the server side, database APIs of an application.
+-It is the backbone that support frontend handling, processing,storing ,and securing data that get displayed to the users.
+-Backend focuses on the server side of a website or application handling the data logic and integration required to ensure smooth functionality
+
+Role of a backend developer
+Build APIs --> Manage DB --> Handle Server Side Logic
+
+Key Components of Backend Development : 
+ 1)Database : USE for storing and retrieving data
+ 2)server : where code runs and request are processed
+ 3)API : it allows communication between frontend and backend
+ 4)Programming Languages : used to build the backend 
+ 5)Authentication : 
+
+What are Shell Commands?
+--Shell Commands are the instructions or inputs given to command line interpreter known as a shell to perform some specific task on a computer.
+--It is use to direct interact with the operating system through the terminal .
+--By using shell commands we can create folder, files, delete folder and files also we can copy files from one folder to another without using a mouse.
+
+Types of shell
+--There are 4 types of Shell
+1)BASH - Bone Again Shell 
+2)ZSH - Z Shell (MAC)
+3)Power Shell (Windows)
+4)FISH - Friendly Interactive Shell
+
+Node JS:
+--Its a JavaScript runtime environment that allows us to run JavaScript code outside of a web browser.
+--It is an open source cross platform JavaScript runtime environment that runs on chromes V8 Engine.
+--Node JS is known for its non-blocking I/O, Event driven architecture making it great for building scalable high performance
+
+Node JS Architecture :
+1-Event Driven
+2-Single Threaded /non-blocking I/O
+--It handle multiple connections using a single thread via the event loop and callback.
+--Operations like reading files ,databases or network calls do not block execution. 
+--Instead callback, promise, async await and else completion.
+
+Node REPL(Read-Evaluate-Print-Loop)
+--It is an interactive shell in NodeJS, that allows to execute JavaScript code line by line and see immediate results.
+--It is useful for quick testing, debugging and learning where JavaScript code can be experimented with directly.
+
+How it Works ?
+--Read :It takes the user input
+--Evaluate :It evaluate the code immediately in the same line
+--Print :It Shows the output or result
+--LOOP :It waits for the next input until the user exits
+--To start Node REPL open terminal or cmd type (node) and press enter
+--To Exit we can use (.exit)
+--And to clear Environment (.clear)
