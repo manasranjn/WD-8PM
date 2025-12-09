@@ -49,3 +49,43 @@ How it Works ?
 --To start Node REPL open terminal or cmd type (node) and press enter
 --To Exit we can use (.exit)
 --And to clear Environment (.clear)
+
+Module :
+--A module in NodeJS is self contained unit of code placed in a file or folder ,capable of exporting functionality for use elsewhere.
+--Modules prevent global name space pollution help organising code and improve maintainability
+
+There are three types of modules
+1-BuiltIn Modules-Included with JS
+2-Local Modules -User defined or created by developers as a part of project
+3-External Modules - Installed via npm and stored in'node_modules'folder
+
+
+Modules in NodeJS:-
+--Node uses a powerful module system to help organise code, promote reuse and encapsulate functionality of node js application structure.
+--There are two primary systems in nodejs
+ 1.CommonJS Modules and
+ 2.ES6/ECMA Script Modules
+
+CommonJS Module System:-
+--It is a traditional module system in node.js. It uses require() method  to import module and "module.export" or export functionality.
+--Each module or file wrap in a function exposing module, exports, require.
+--__filename and __dirname for local scope ensuring variable donot link into global scope.
+
+ES6/ECMA Script Modules:-
+--ES6 is the modern standardise utilising import and export. 
+--modules are loaded asynchronously for better performance.
+--we have to use type module in package.js to enable ES6.
+
+Node.js path module :
+--The node js path module is a built in module used to work with files and directory across different operating system ,allowing seamless cross platform development and file manipulation task.
+--path module helps handle differences in path format between operating system
+--it is used for manipulating ,joining,resolving,and normalising path  in model  application
+
+Path Module: (method)
+-> path.resolve():- Resolves an absolute path from relative segments.
+-> path.basename():- Gets the last part of a path.
+-> path.dirname():- It return the directory name of a path.
+-> path.extname():- It returns the file extension.
+-> path.isAbsolute():- It checks path is absolute or not.
+
+--To use path module in NodeJS, we have to import it .
