@@ -89,3 +89,34 @@ Path Module: (method)
 -> path.isAbsolute():- It checks path is absolute or not.
 
 --To use path module in NodeJS, we have to import it .
+
+NodeJS FileSystem(fs):
+--NodeJS filesystem(fs) module enables file and directory I/O operations offering both sysnchronous and asynchronous methods to handle files efficiently in different scenario.
+
+Use of fs module :
+--The NodeJs fs module is a core part of NodeJS, that allows programm to interact with the computer's filesystem.
+--Its primary use is to perform essential file and diectory Operations such as reading writting creating deleting and monitoring files. 
+
+Synchronous Method :
+--Sysnchronous method block execution until the operation completes, making other process wait, which can be inefficient for I/O bound task.
+--Some common sysnchronous method :-
+     ---fs.readFileSync()
+     ---fs.appendFileSync()
+     ---fs.mkdirSync()
+     ---fs.existsSync()
+     ---fs.writeFileSync()
+     ---fs.renameSync()
+
+Asynchronous Method :
+--Asynchronous method do not block execution instead they use callbacks, promises or async-await allowing other Operations to run curently and improving for heavy I/O workload.
+--These are preffered for sckelble eye-performance  application or server
+--Some common sysnchronous method :-
+     ---fs.unlink()
+     ---fs.readFile()
+     ---fs.appendFile()
+     ---fs.exits()
+     ---fs.rename()
+
+CLI(Command Line Interface):
+--CLI means interacting with your programm through the terminal instead of the browser or GUI(graphical user interface).
+--In nodeJS we can create CLI tools that accept commands, arguments, options like npm or npx.
