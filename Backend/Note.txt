@@ -120,3 +120,68 @@ Asynchronous Method :
 CLI(Command Line Interface):
 --CLI means interacting with your programm through the terminal instead of the browser or GUI(graphical user interface).
 --In nodeJS we can create CLI tools that accept commands, arguments, options like npm or npx.
+
+HTTP Server(Hyper Text Transfer Protocol):
+--An HTTP server is programm taht listens for request from clients and sends back response(like web page or data).
+--In NodeJS we can easily create an HTTP server using the builtin HTTP module. 
+--client and browser sends a request like URL,then server listens on a specific port no and then the server processes the request and sends back a responds like html, text or json
+
+http module ---> http server --->request --->response
+         
+          = request----->http server--->response
+
+Steps to create https server in nodejs :-
+Step 1: we have to import http module  either by using require() or import statement.
+
+const http=require('http')
+--The http module provides methods to create and manage servers.
+
+Step 2: create a server by using creatServer()
+
+const server = http.creatServer((req,res)=>{
+     res.writeHead(200,('Content-Type': 'test/plain'));
+     res.end("message");
+})
+
+req-> Request object which contains data from client side
+res-> Response object which is used to send data to client
+writeHead()->it is a method which is used to define the header or set the status code and content type.
+end()->it is is a method which is used to send data to client side
+
+Step 3: Listen/Start the server by using listen()
+--we need to pass a port  number as an argument to the listen() to run the server on a specific port.
+
+server.listen(3000,()=>{
+     log("Server running at http://localhost:3000")
+})
+
+--Port number can be anything in between 1024 and 6555(e.g: 3000,5000,8000)
+--Now we can open our browser and go to the URL to see the Response
+
+
+Some Important Request Properties
+req.url : the path requested by client side
+e.g : /about , /contact
+
+req.methods : it is the http method used to check request type 
+e.g: GET,POST,PUT
+
+req.headers : it contains all request headers
+e.g : {host : 'localhost.....'} 
+
+Important Response Properties :
+res.writeHead(statusCode,header): It is used to set the HTTP status code and response header.
+
+res.write(data) : It is used to send data in Chunks
+
+res.end([data]) : sends response, and it must be called
+
+
+COMMON HTTP STATUS CODE
+200 -> ok -> Request successful
+201 -> created -> Data created
+400 -> Bad Request -> Invalid Request 
+401 -> Unauthorized -> No Authentication
+403 -> Forbidden -> Access denied
+404 -> Not found -> Page Not found
+500 -> Internal server error -> server crashed
