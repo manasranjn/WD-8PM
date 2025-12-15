@@ -185,3 +185,54 @@ COMMON HTTP STATUS CODE
 403 -> Forbidden -> Access denied
 404 -> Not found -> Page Not found
 500 -> Internal server error -> server crashed
+
+
+Express :
+Express is a light weight nodejs framework design to make the development of server side applications straight forward by providing inbuilt methods for routing ,handling http request/response and intigrating middle ware easily
+--Express is a minimalist web application framework built on nodejs which is primarily use to simplify the process of creating web servers.
+--Express is flexible and fast which enables developers to built both small and large applications.
+--It is commonly used to create APIs, web application and handling various http methods.
+
+Use of Express :
+--Built Web App and API using routing and middleware
+--Reduces boilerplate code and coding time compare to VANILA nodeJS
+--Organises functionality with middleware for tasks like authentication, login, and errorhandling
+--It allows rapid development of scalable and maintainable web application
+
+Differences between Express and nodejs
+--Routing :(NodeJS) -> In nodejs manual setup mode code require
+           (Express) -> Clean and builtIn routing system
+
+--JSON Parsing :(NodeJS) -> manual or 3rd party
+                (Express) -> simple by using Express.json()
+
+--Middleware :(NodeJS) -> needs 3rd party library
+              (Express)-> BuiltIn and systematic  middleware support
+
+HOW to create an Express project ?
+--To create an Express project firstly we need nodejs Installed with npm
+--And then Install the Express package using npm
+--After that we have to setup our application step by step
+
+Route of create and express project
+step 1 -Initialize project 
+Open terminal and run the command to initialize npm 
+-> npm init -y
+
+step 2 -Install express
+Install express via npm
+->npm install express
+
+step 3 - Create server files
+Create a file named index.js or server.js as mentioned in your package.json file.
+The file should be present in root directory of the project.
+
+step-4 -Import express module and initialize the express.
+const express=require('express')
+const app=express()
+
+step-5 -Define a port and start/listen the server
+const PORT=8000
+app.listen(PORT,()=>{
+     console.log("Server running")
+})
