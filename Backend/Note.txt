@@ -338,6 +338,20 @@ so large app stay clean ,reusable and easy to maintain.
 
 #STATIC FILES IN EXPRESS:-
 -Express provide a built-in MiddleWare express.static() to serve static file from a folder such as public or assest.
--Static file in express are files like image ,css ,client side javascript,pdf,etc that are sent to the browser without any server-side processing.
+-Static file in express are files like image, css, client side javascript, pdf, etc that are sent to the browser without any server-side processing.
 -By using static() any file inside public folder becomes directly accessible by its path.
 -We can mount multiple static folders or add a url prefix like app.use('/assest',express.static('public')) to serve file under a specific route segment.
+
+#What is Ejs?
+-Ejs stands for embedded javascript which is a template engine that lets us write html pages with javascript to generate dynamic content.
+-Ejs template page uses <%=variable%> to display values into html and <% %> to write javascript logic such loop, conditions inside the template file.
+-To enable ejs we need to install ejs module and write the below syntax
+app.set("view engine","ejs");
+app.set("views", path.join(__dirname,"views"))
+-Once configure by  using the above syntax express will automatically look for the template inside the views folder and ejs will render them when res.render() is called.
+
+#SERVER-SIDE RENDERING WITH Ejs:-
+-----------------------------------
+-With server-side rendering a route handler call res.render('templateName,{data}) and ejs combine the template with the data to produce complete html page on the server.
+-Ejs handle dynamic html views while express.static() serve supoorting assest like css and javascript use by the views.
+-The most common structure for view folder for ejs template and public folder for static file.
