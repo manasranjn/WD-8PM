@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%=title%>
+    </title>
+</head>
+
+<body>
+    <h1>Simple If Statement</h1>
+    <%if(user.isLoggedIn){ %>
+        <p>Welcome back! You are logged in.</p>
+        <%}%>
+
+            <div>
+                <h1>If-Else Statement</h1>
+                <%if(user.isAdmin){ %>
+                    <p>Welcome, Administrator</p>
+                    <% }else{ %>
+                        <p>Welcome, Regular User!</p>
+                        <% }%>
+            </div>
+
+            <div>
+                <h2>Ternary Operator</h2>
+                <p>Status: <%=user.hasItems ? 'You have items' :'No Items'%>
+                </p>
+            </div>
+</body>
+
+</html>

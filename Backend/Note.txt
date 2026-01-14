@@ -342,13 +342,13 @@ so large app stay clean ,reusable and easy to maintain.
 -By using static() any file inside public folder becomes directly accessible by its path.
 -We can mount multiple static folders or add a url prefix like app.use('/assest',express.static('public')) to serve file under a specific route segment.
 
-#What is Ejs?
--Ejs stands for embedded javascript which is a template engine that lets us write html pages with javascript to generate dynamic content.
--Ejs template page uses <%=variable%> to display values into html and <% %> to write javascript logic such loop, conditions inside the template file.
+#What is ejs?
+-ejs stands for embedded javascript which is a template engine that lets us write html pages with javascript to generate dynamic content.
+-ejs template page uses <%=variable%> to display values into html and <% %> to write javascript logic such loop, conditions inside the template file.
 -To enable ejs we need to install ejs module and write the below syntax
 app.set("view engine","ejs");
 app.set("views", path.join(__dirname,"views"))
--Once configure by  using the above syntax express will automatically look for the template inside the views folder and ejs will render them when res.render() is called.
+-Once configure by using the above syntax express will automatically look for the template inside the views folder and ejs will render them when res.render() is called.
 
 #SERVER-SIDE RENDERING WITH Ejs:-
 -----------------------------------

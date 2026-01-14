@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%=title%>
+    </title>
+</head>
+
+<body>
+    <h1>Welcome</h1>
+    <h3>This is our home page</h3>
+    <p>
+        <%=title%>
+    </p>
+    <p>
+        My name is <%=name%>, and I'm <%=age%> years old. And my hobbies are: <%=hobbies%>.
+
+                    <% hobbies.forEach((hobby)=>{{ %>
+                        <li>
+                            <%= hobby %>
+                        </li>
+                        <% }}); %>
+    </p>
+</body>
+
+</html>
