@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true })); //pass data from a form
 //Routes
 app.get("/", (req, res) => {
     res.render("index", {
-        title: "Home Page",
+        title: "This is Home Page",
     });
 });
 
@@ -37,7 +37,7 @@ app.get("/variables", (req, res) => {
             name: "ABCD",
             age: 25,
             email: "abcd@gmail.com",
-            isActive: false,
+            isActive: true,
         },
     });
 });
