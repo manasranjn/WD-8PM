@@ -1,0 +1,29 @@
+MongoDB:-
+========
+->Mongodb is a Nosql documnent database. that store data has json document inside collections.
+->Documents are like json object key value pairs and can contain nested document and arrays providing a schema-less starcuture.
+->The core features includes flexible schema indexing for first queries horizontal scaling, high avalaibility and aggrigation for data processing.
+->We can perform basic operatin like CRUD operation that is insert,find,update,delete documnet.
+
+Mongoose:-
+=========
+mongoose is an object data modeling (ODM) library for nodejs used to starcuture and validate data when working with mongodb.
+->it is a data supervised.
+->it create schema means structure for our data.
+->it is used to define the rules to create data models.
+->also it provides methods to ineract with data.
+e.g:-find(), updateOne(), create(), findOne(), etc..
+
+Difference between mongodb and Mongoose
+---------------------------------------
+mdb->it is a nosql documnet database server.
+m->it is an ODM library for nodejs.
+mdb->it stores and manage data by using queries,indexing .
+m->it is used to create data model validate and organized data while using mongoDB.
+mdb->it can run alone as a database.
+m->it can not work without mongoDB.it only helps interact with mongoDB.
+
+why using mongoDB without using mongoose riking in large app?
+->using mongoDB directly in  large app is not wrong but it is risky if we do not build strong partend , validation ,structure and consistency that odm like mongoose 
+will provide.
+->mongoDB is schema flexible so diiferent document in same collection can silently and off with missing fields ,wrong times or inconsistency structure.
