@@ -27,3 +27,50 @@ why using mongoDB without using mongoose riking in large app?
 ->using mongoDB directly in  large app is not wrong but it is risky if we do not build strong partend , validation ,structure and consistency that odm like mongoose 
 will provide.
 ->mongoDB is schema flexible so diiferent document in same collection can silently and off with missing fields ,wrong times or inconsistency structure.
+
+##Some common terms of mongoDB and mongoose
+(i)Database:-it is a container group related data in mongoDB.
+->one mongoDB server can host many databases each database contains multiple collections.
+(ii)Collection:-a collection is a group of document inside a database simillar to a table.
+->collection are schema flexible that is document in the same collection can have different fields and structure.
+(iii)Document:-the basic data record in mongoDB stored in BSON (binary json).
+->a document is set of field value pairs like json object.
+(iv)schema:-A defination of the structure of data that is fields types and constraints for Documents.
+mongoDB itself is schema flexible but schemas are used to keep data consistent.
+(v)Model:-In Mongoose a model is a compiled class created from a schema. it represents a collection and provides method to create read,update,delete documnet 
+that follws in the schema.
+(vi)ODM(object data model):-A programming layer that maps application object to database documnet for mongoDB.
+->it provides scema, model ,validation and help us for nodejs and mongoDB.
+(vii)_id:-it is special field that uniqly identifies each document in a collection.
+->it is created automatically if not provided by default .
+->it is used to serch data uniqly.
+
+
+Common methods of mongoose:-
+----------------------------
+->Mongoose methods are the function provide a mongoose model and documnet to perform operation like CRUD validation aganist mongoDB .
+->this methods lets such ineract with collection in an object oriented way instead of writing raw code.
+
+Types of mongoose methods:-
+---------------------------
+1.Static methods:-it is also called as model methods this method called on the model itself and usually operate on many document.
+e.g: user.find()
+2.Instance methods:-This is also known as documnet called on a specific documnet instance and operate on that one document.
+e.g: user.save()
+
+## Static methods:-
+(i)model.create(data):it create and save a new document.
+(ii)model.find(filter):-it read multiple document that matches a queries and returns documents.
+(iii)model.findOne(filter):-it read the first document that matches a queries.
+(iv)model.finfById(id):-it read a documnet by it's  _id.
+(v)model.findByIdAndUpdate(id, update):-it reads a document and update by it's id.
+(vi)model.updateOne(filter, update), model.updateMany(filter, update):-it update a matching documnet based on its queries.
+(vii)model.findByIdAndDelete(id):-deletes a documnet by it's id.
+(viii)model.deleteOne(filter), model.deleteMany(filter):-it delete matching document based on its queries.
+(ix)model.countDocuments(filter):it count the matching document
+
+## Some Instance methods:-
+(i)doc.save():it save new or modify doc and runs validation and middleware.
+(ii)doc.remove()/deleteOne():it delete a specific document inside a collection.
+(iii)doc.validate(),doc.validateSync():-it runs schema validation without saving .
+(iv)doc.toObject()/doc.toJSON():-converts a mongoose document to a palne javascript object for response
