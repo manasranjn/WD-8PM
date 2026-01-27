@@ -74,3 +74,66 @@ e.g: user.save()
 (ii)doc.remove()/deleteOne():it delete a specific document inside a collection.
 (iii)doc.validate(),doc.validateSync():-it runs schema validation without saving .
 (iv)doc.toObject()/doc.toJSON():-converts a mongoose document to a palne javascript object for response
+
+//How to create and get the mongo db connection string?
+
+-The mongo db connection string in uri used by our app to connect to mongo db .
+-We can create and get the connection  string in two ways:
+1)From mongo db atlast:-
+-Create a project and a cluster atlas that had a database user and a ip access then click "connect your application" and select the drive method .
+-Now we have to set user name ,password and db name and one it done we will click on "continue/create".
+-And then copy the uri from step 3 .
+2)Local mongoDB-
+-Install and start mongo db in your machine by default it listen on local host port number 27017.according to the port number the typical connection string looks like mongodb://localhost:27017/dataBasename
+
+
+mongodb+srv://manasranjanbera:u8uWFJKVSLYOnYoS@server1.wgkspjs.mongodb.net/?appName=Server1
+mongodb+srv://user1:DAgT1ZQPhguJOhs5@server1.wgkspjs.mongodb.net/?appName=Server1
+
+#CLUSTER:-
+----------
+-A mongodb cluster is a mongodb server that provides features like readundency, availability and scalibility.
+-In atlas a cluster is a manager database deployment that we have created, it can be scale vertically or horizontally.
+
+//STEPS TO CREATE AN EXPRESS SERVER FOR MONGODB:-
+1)Create a project folder and init project
+-npm init -y
+
+2)Install required packages
+-npm i express mangoose dotenv
+
+3)Create a basic express server and start the server
+
+4)Store mongodb uri (connection stream) in .env (in env file everything should be in capital)
+-MONGO_URI = 'LINK'
+
+5)Load it in server file 
+-require('dotenv').config();
+const URI=process.env.MONGO_URI;
+
+6)Connect mongo db by using mangoose.
+ mongoose.connect(URI)
+    .then((res) => {
+        console.log("DB Connected");
+    }).catch((err) => {
+        console.log(err.message);
+    })
+
+(optional)    
+8)Define schema and model by using mangoose
+-const taskSchema = new mongoose.Schema(
+    {
+        title: {
+            type: String,
+            required: true
+        },
+        completed: {
+            type: String,
+            default: false
+        }
+    },
+    {
+        timestamps: true
+    }
+)
+const Task = mongoose.model('ModelName', taskSchema) 
