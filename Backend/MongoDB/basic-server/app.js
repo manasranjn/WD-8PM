@@ -18,6 +18,7 @@ const studentSchema = new mongoose.Schema({
 
 const Student = mongoose.model('Student', studentSchema)
 
+//! Create data
 const s1 = new Student({
     name: 'Gyana',
     age: 22,
@@ -25,8 +26,64 @@ const s1 = new Student({
     section: 'A',
     mark: 425
 })
+// s1.save()
 
-s1.save()
+//! Create data
+// Student.create({
+//     name: "Anshu",
+//     age: 22,
+//     course: "B.Tech",
+//     section: 'B',
+//     mark: 93
+// })
+
+//! Find all data
+// Student.find()
+//     .then((res) => {
+//         console.log(res);
+//     }).catch((err) => {
+//         console.log(err);
+//     })
+
+//! Find one data
+// Student.findOne({ name: "Gyana" })
+//     .then((res) => {
+//         console.log(res);
+//     }).catch((err) => {
+//         console.log(err);
+//     })
+
+//! Find one data by id
+// Student.findById("697b7d9d40220ca0cfa7822a")
+//     .then((res) => {
+//         console.log(res);
+//     }).catch((err) => {
+//         console.log(err);
+//     })
+
+
+//! Update 
+// Student.updateOne({ _id: '697b7d9d40220ca0cfa7822a' }, { section: "B" })
+//     .then((res) => {
+//         console.log(res);
+//     }).catch((rej) => {
+//         console.log(rej);
+//     })
+
+//! Delete
+// Student.deleteOne({ course: 'M.Tech' })
+//     .then((res) => {
+//         console.log(res);
+//     }).catch((rej) => {
+//         console.log(rej);
+//     })
+
+Student.findByIdAndDelete('697cbf2cf28ccb03828e6a14')
+    .then((res) => {
+        console.log(res);
+    }).catch((rej) => {
+        console.log(rej);
+    })
 
 mongoose.connect(process.env.MONGO_URI)
     .then((res) => {
@@ -36,7 +93,6 @@ mongoose.connect(process.env.MONGO_URI)
         console.log(err);
 
     })
-
 
 app.listen(PORT, () => {
     console.log("Server running");
