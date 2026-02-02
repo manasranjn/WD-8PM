@@ -35,6 +35,10 @@ const s1 = new Student({
 //     course: "B.Tech",
 //     section: 'B',
 //     mark: 93
+// }).then((res) => {
+//     console.log("Data Created");
+// }).catch((err) => {
+//     console.log("Failed to create");
 // })
 
 //! Find all data
@@ -46,7 +50,7 @@ const s1 = new Student({
 //     })
 
 //! Find one data
-// Student.findOne({ name: "Gyana" })
+// Student.findOne({ name: "Anshu" })
 //     .then((res) => {
 //         console.log(res);
 //     }).catch((err) => {
@@ -63,7 +67,7 @@ const s1 = new Student({
 
 
 //! Update 
-// Student.updateOne({ _id: '697b7d9d40220ca0cfa7822a' }, { section: "B" })
+// Student.updateOne({ _id: '697b7d9d40220ca0cfa7822a' }, { section: "C" })
 //     .then((res) => {
 //         console.log(res);
 //     }).catch((rej) => {
@@ -78,12 +82,12 @@ const s1 = new Student({
 //         console.log(rej);
 //     })
 
-Student.findByIdAndDelete('697cbf2cf28ccb03828e6a14')
-    .then((res) => {
-        console.log(res);
-    }).catch((rej) => {
-        console.log(rej);
-    })
+// Student.findByIdAndDelete('6980b7c92deadae0d975aeb3')
+//     .then((res) => {
+//         console.log(res);
+//     }).catch((rej) => {
+//         console.log(rej);
+//     })
 
 mongoose.connect(process.env.MONGO_URI)
     .then((res) => {
