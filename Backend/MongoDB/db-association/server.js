@@ -11,53 +11,69 @@ mongoose.connect(MONGO_URL)
         console.log('Connection failed');
     })
 
-const MobileSchema = new mongoose.Schema({
-    model: {
-        type: String,
-        required: true,
-    },
-    price: {
-        type: Number,
-        required: true,
-        min: 10000,
-        max: 100000
-    },
-    description: {
-        type: String,
-    },
-    ram: {
-        type: String,
-        enum: ['6GB', '8GB', '12GB'],
-        required: true,
-    },
-    // brandDetails: BrandSchema
-})
-
-const Mobile = mongoose.model('Mobile', MobileSchema)
-
-// Mobile.create({
-//     model: "Vivo X200T",
-//     price: 68999,
-//     description: "Good camera",
-//     ram: '8GB'
-// }).then((res) => {
-//     console.log("Mobile Created");
-// }).catch((err) => {
-//     console.log(err.message);
-// })
-
 const BrandSchema = new mongoose.Schema({
     brandName: String,
     established: Number,
     location: String
-})
-// const Brand = mongoose.model("Brand", BrandSchema)
+},
+    {
+        timestamps: true
+    })
+
+const Brand = mongoose.model("Brand", BrandSchema)
 
 // Brand.create({
-//     brandName: "Vivo",
+//     brandName: "Apple",
 //     established: 1990,
-//     location: "China"
+//     location: "USA"
 // })
+
+const mobileSchema = new mongoose.Schema({
+    model: String,
+    price: Number,
+    ram: String,
+    brand: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Brand"
+    }
+},
+    {
+        timestamps: true
+    }
+)
+
+const Mobile = mongoose.model("Mobile", mobileSchema)
+
+// Mobile.create({
+//     model: "iPhone 17",
+//     price: 125999,
+//     ram: "8GB",
+//     brand: "69820d89052c72c7e37d69fc"
+// }).then((res) => {
+//     console.log("Product Created");
+// }).catch((err) => {
+//     console.log(err);
+// })
+
+
+// Mobile.find().populate("brand")
+//     .then((res) => {
+//         console.log(res);
+//     }).catch((err) => {
+//         console.log(err);
+//     })
+// Mobile.find().populate({ path: "brand", select: "brandName" })
+//     .then((res) => {
+//         console.log(res);
+//     }).catch((err) => {
+//         console.log(err);
+//     })
+Mobile.find().populate({ path: "brand", select: "-brandName" })
+    .then((res) => {
+        console.log(res);
+    }).catch((err) => {
+        console.log(err);
+    })
 
 app.listen(PORT, () => {
     console.log("Server running");
