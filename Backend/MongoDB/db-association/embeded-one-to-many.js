@@ -14,52 +14,36 @@ mongoose.connect(MONGO_URL)
 const productSchema = new mongoose.Schema({
     pName: String,
     description: String,
-    price: Number,
-    seller: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-    }
+    price: Number
 })
-
-const Product = mongoose.model("Products", productSchema)
 
 const sellerSchema = new mongoose.Schema({
     name: String,
     email: String,
+    products: [productSchema]
 })
 
-const User = mongoose.model("User", sellerSchema)
+const Seller = mongoose.model("Seller", sellerSchema)
 
-// User.create({
-//     name: "Allen",
-//     email: "allen@gmail.com",
+// Seller.create({
+//     name: "Smith",
+//     email: "smith@gmail.com",
+//     products: [
+//         { pName: "Mobile", description: "...", price: 45999 },
+//         { pName: "Laptop", description: "...", price: 85999 },
+//         { pName: "Fridge", description: "...", price: 39999 },
+//     ]
 // }).then((res) => {
 //     console.log("Product created");
 // }).catch((err) => {
 //     console.log("Failed to create product");
 // })
 
-// User.find().then((res) => {
+// Seller.find().then((res) => {
 //     console.log(res)
 // }).catch((err) => {
 //     console.log(err);
 // })
-
-// Product.create({
-//     pName: "Tablet",
-//     description: "...",
-//     price: 35000,
-//     seller: '69836222a51bcaedb5a95249'
-// }).then((res) => {
-//     console.log("Product created");
-// }).catch((err) => {
-//     console.log("Failed to create product");
-// })
-
-// Product.find()
-//     .populate("seller")
-//     .then((postsWithUser) => console.log(postsWithUser))
-//     .catch((e) => console.log(e));
 
 app.listen(PORT, () => {
     console.log("Server running");
