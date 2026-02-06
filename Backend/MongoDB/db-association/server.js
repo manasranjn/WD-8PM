@@ -11,55 +11,66 @@ mongoose.connect(MONGO_URL)
         console.log('Connection failed');
     })
 
-const productSchema = new mongoose.Schema({
-    pName: String,
-    description: String,
-    price: Number,
-    seller: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-    }
-})
+//Course Schema
+const subjectSchema = new mongoose.Schema(
+    {
+        title: String,
+    },
+    { timestamps: true }
+);
 
-const Product = mongoose.model("Products", productSchema)
+//Compile
+const Subject = mongoose.model("Subject", subjectSchema);
 
-const sellerSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-})
+//Course Schema
+const lernerSchema = new mongoose.Schema(
+    {
+        name: String,
+    },
+    { timestamps: true }
+);
+const Lerner = mongoose.model("Lerner", lernerSchema);
 
-const User = mongoose.model("User", sellerSchema)
+//Enrollment Schema
+const enrollmentSchema = new mongoose.Schema(
+    {
+        lerner: { type: mongoose.Schema.Types.ObjectId, ref: "Lerner" },
+        subject: { type: mongoose.Schema.Types.ObjectId, ref: "Subject" },
+        enrolledAt: { type: Date, default: Date.now() },
+        status: { type: String, enum: ["active", "completed", "dropped"] },
+    },
+    { timestamps: true }
+);
+//Compile
+const Enrollment = mongoose.model("Enrollment", enrollmentSchema);
 
-// User.create({
-//     name: "Allen",
-//     email: "allen@gmail.com",
-// }).then((res) => {
-//     console.log("Product created");
-// }).catch((err) => {
-//     console.log("Failed to create product");
+//? Create some courses
+// Subject.create({
+//     title: "Node.js",
 // })
-
-// User.find().then((res) => {
-//     console.log(res)
-// }).catch((err) => {
-//     console.log(err);
-// })
-
-// Product.create({
-//     pName: "Tablet",
-//     description: "...",
-//     price: 35000,
-//     seller: '69836222a51bcaedb5a95249'
-// }).then((res) => {
-//     console.log("Product created");
-// }).catch((err) => {
-//     console.log("Failed to create product");
-// })
-
-// Product.find()
-//     .populate("seller")
-//     .then((postsWithUser) => console.log(postsWithUser))
+//     .then((course) => console.log(course))
 //     .catch((e) => console.log(e));
+
+//? Create student 
+// Lerner.create({
+//     name: "Adams",
+// })
+//     .then((student) => console.log(student))
+//     .catch((e) => console.log(e));
+
+//? Enroll the student in the course
+// Enrollment.create({
+//     lerner: "6986082ab51acdc21d19cdcb",
+//     subject: "698607b0591f1310c5b46793",
+//     status: "active",
+// }).then((enrollment) => console.log(enrollment));
+
+//!Get all enrollments for a student (with full course info)
+Enrollment.find({ lerner: "6986082ab51acdc21d19cdcb" })
+    .populate("subject", "title")
+    .populate("lerner", "name")
+    .then((enrollment) => console.log(enrollment))
+    .catch((e) => console.log(e));
 
 app.listen(PORT, () => {
     console.log("Server running");
