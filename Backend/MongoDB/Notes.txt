@@ -35,10 +35,19 @@ will provide.
 ->collection are schema flexible that is document in the same collection can have different fields and structure.
 (iii)Document:-the basic data record in mongoDB stored in BSON (binary json).
 ->a document is set of field value pairs like json object.
-(iv)schema:-A defination of the structure of data that is fields types and constraints for Documents.
-mongoDB itself is schema flexible but schemas are used to keep data consistent.
+
+(iv)Schema:-A schema defines the structure, data type, rules, and constraints for documents. It helps maintain data consistency.
+-MongoDB itself is schema flexible but schemas are used to keep data consistent.
+e.g:- const userSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  age: Number
+});
+
 (v)Model:-In Mongoose a model is a compiled class created from a schema. it represents a collection and provides method to create read,update,delete documnet 
-that follws in the schema.
+that follows in the schema.
+e.g:- const User = mongoose.model("User", userSchema);
+
 (vi)ODM(object data model):-A programming layer that maps application object to database documnet for mongoDB.
 ->it provides scema, model ,validation and help us for nodejs and mongoDB.
 (vii)_id:-it is special field that uniqly identifies each document in a collection.
@@ -137,3 +146,255 @@ const URI=process.env.MONGO_URI;
     }
 )
 const Task = mongoose.model('ModelName', taskSchema) 
+
+CRUD Operations in MongoDB using Mongoose
+===========================================
+-CRUD stands for Create, Read, Update, Delete.
+-These are the basic operations performed on data stored in MongoDB collections.
+
+#CREATE (Save Data)
+1) Save data using create()
+-Used to create and save a new document in one step.
+-It runs schema validation automatically.
+e.g:- 
+Task.create({
+  title: "Learn MongoDB",
+  completed: false
+});
+
+2) Save data using new Model() + save()
+-Used when we want more control before saving.
+e.g:- const task = new Task({
+  title: "Learn Mongoose",
+  completed: false
+});
+task.save();
+
+
+# READ (Fetch Data)
+-The READ operation is used to fetch or retrieve data from a MongoDB collection.
+-In Mongoose, read operations are performed using model methods.
+
+1) find()
+-Used to fetch all matching documents
+-Returns an array
+Task.find();
+-Fetch documents with condition
+Task.find({ completed: false });
+
+2) findOne()
+-Returns only one document
+-If multiple matches exist, it returns the first one
+Task.findOne({ title: "Learn MongoDB" });
+
+3) findById()
+-Used to fetch a document using _id
+-_id is unique
+Task.findById(id);
+
+4) select()
+-Used to include or exclude fields
+- To select specific filed- User.find().select("name email");
+-To exclude a filed- User.find().select("-password");
+
+# UPDATE (Modify Data)
+-The UPDATE operation is used to modify existing documents in a collection.
+
+1) updateOne()
+-Updates only one matching document
+e.g:- User.updateOne(
+  { email: "test@gmail.com" },
+  { age: 25 }
+);
+
+2) updateMany()
+-Updates multiple documents
+e.g:- User.updateMany(
+  { active: false },
+  { active: true }
+);
+
+3) findByIdAndUpdate()
+-Finds document by _id and updates it
+e.g:- User.findByIdAndUpdate(
+  id,
+  { age: 30 },
+  { new: true }
+);
+
+4) findOneAndUpdate()
+-Finds first matching document and updates
+e.g:- User.findOneAndUpdate(
+  { email: "test@gmail.com" },
+  { age: 28 }
+);
+
+##Update Operators
+-$set → update specific fields
+-$inc → increment value
+-$push → add value to array
+-$pull → remove value from array
+e.g:- User.updateOne(
+  { _id: id },
+  { $set: { name: "Rahul" } }
+);
+
+
+# DELETE (Remove Data)
+-The DELETE operation is used to remove documents from a collection.
+
+1) deleteOne()
+-Deletes only one matching document
+e.g:- User.deleteOne({ email: "test@gmail.com" });
+
+2) deleteMany()
+-Deletes multiple documents
+e.g:- User.deleteMany({ active: false });
+
+3) findByIdAndDelete()
+-Deletes document using _id
+e.g:- User.findByIdAndDelete(id);
+
+4) findOneAndDelete()
+-Finds first matching document and deletes it
+e.g:- User.findOneAndDelete({ email: "test@gmail.com" });
+
+
+Validations on SchemaTypes
+===========================
+-Validations ensure correct and valid data before saving to the database.
+
+e.g:- Common Schema Validations
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    minlength: 3,
+    maxlength: 20
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true
+  },
+  age: {
+    type: Number,
+    min: 18,
+    max: 60
+  }
+});
+
+## Common validation options
+-required – field must be present
+-unique – no duplicate values
+-min, max – number range
+-minlength, maxlength – string length
+-enum – restrict values to given list
+
+Database Association (Relationships)
+======================================
+-MongoDB supports relationships using:
+    1.Embedding
+    2.Referencing
+
+1) Embedding:-
+-Store related data inside the same document.
+-Faster read performance.
+-Best for small and fixed data.
+
+2) Referencing:-
+-Store references (ObjectId) to another collection.
+-Best for large and reusable data.
+
+Types of Relationships
+=======================
+1)One-to-One:- One document is linked to one document.
+e.g:- profileId: { type: mongoose.Schema.Types.ObjectId, ref: "Profile" }
+
+2)One-to-Many:- One document linked to many documents.
+e.g:- posts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }]
+
+3)Many-to-Many:- Multiple documents related to multiple documents.
+e.g:- students: [{ type: mongoose.Schema.Types.ObjectId, ref: "Student" }]
+courses: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }]
+
+4)Many-to-Many with Junction Collection:- Uses a separate collection for relationship.
+e.g:- const enrollmentSchema = new mongoose.Schema({
+  studentId: { type: mongoose.Schema.Types.ObjectId, ref: "Student" },
+  courseId: { type: mongoose.Schema.Types.ObjectId, ref: "Course" }
+});
+
+populate()
+==========
+-Used to fetch referenced data from another collection.
+-Replaces ObjectId with actual document.
+e.g:- Post.find()
+  .populate("userId")
+-With selected fields
+Post.find()
+  .populate("userId", "name email")
+
+Design Pattern
+==============
+-A design pattern is a reusable solution to commonly occurring problems in software design.
+-It is not code, but a template or blueprint
+-It helps in writing clean, reusable, and maintainable code
+-It provides standard best practices
+
+Why use design patterns?
+-Improves code readability
+-Makes application easy to maintain
+-Reduces code duplication
+-Helps in team collaboration
+-Makes debugging and scaling easier
+
+MVC Design Pattern
+==================
+-MVC stands for:
+    M – Model
+    V – View
+    C – Controller
+-MVC is an architectural design pattern used to separate application logic into different layers.
+
+## What is View?
+-Handles UI or presentation
+-Displays data to the user
+-Does not contain business logic
+-e.g:-React Components, EJS templates
+
+## What is Controller?
+-Acts as a bridge between Model and View
+-Receives request from user
+-Calls model methods
+-Sends response back to view
+e.g:- exports.getUsers = async (req, res) => {
+  const users = await User.find();
+  res.json(users);
+};
+
+
+How MVC Works
+=============
+Step-by-step flow:
+1. User sends a request (browser / frontend)
+2. Request goes to Controller
+3. Controller processes the request
+4. Controller calls Model
+5. Model interacts with database
+6. Model returns data to Controller
+7. Controller sends data to View
+8. View displays data to user
+
+How to Integrate MVC Design Pattern
+===================================
+-MVC can be implemented in Node.js + Express projects as follows:
+Project:-
+1.models    
+    All the models should present here
+
+2.controllers
+    All the controllers should present here
+
+3. routes
+    All the routes should present here
