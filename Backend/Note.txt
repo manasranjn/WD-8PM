@@ -74,7 +74,7 @@ CommonJS Module System:-
 ES6/ECMA Script Modules:-
 --ES6 is the modern standardise utilising import and export. 
 --modules are loaded asynchronously for better performance.
---we have to use type module in package.js to enable ES6.
+--we have to use type -> module in package.js to enable ES6.
 
 Node.js path module :
 --The node js path module is a built in module used to work with files and directory across different operating system ,allowing seamless cross platform development and file manipulation task.

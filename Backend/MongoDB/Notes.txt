@@ -398,3 +398,6 @@ Project:-
 
 3. routes
     All the routes should present here
+
+4. views/frontend
+    All the frontend pages should present here
