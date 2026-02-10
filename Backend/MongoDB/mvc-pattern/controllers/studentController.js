@@ -1,15 +1,16 @@
 const Student = require('../models/student')
 
-exports.createStudent = async (req, res) => {
-    Student.create({
-        name: "ABC",
-        age: 12,
-        rollNo: '123CD56',
-        subject: "MongoDB"
-    })
+exports.createStudent = (req, res) => {
+    const student = new Student(req.body)
+    console.log(req.body);
+    console.log(student);
+
+    student.save()
+        .then(() => res.status(201).json({ message: 'Student Created successfully', content: student }))
+        .catch(err => res.status(400).json({ error: err.message }));
 }
 
-exports.getStudent = async (req, res) => {
+exports.getStudents = async (req, res) => {
     const student = await Student.find()
     res.json(student)
 }
