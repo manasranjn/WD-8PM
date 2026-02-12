@@ -12,11 +12,11 @@ const EditPost = () => {
 
   const getData = () => {
     axios
-      .get(`http://localhost:5000/posts/${postId}`)
+      .get(`http://localhost:5000/api/post/getById/${postId}`)
       .then((response) => {
-        console.log(response.data);
-        setTitle(response.data.title);
-        setDescription(response.data.description);
+        // console.log(response.data.post);
+        setTitle(response.data.post.title);
+        setDescription(response.data.post.description);
       })
       .catch((error) => {
         console.error("Error fetching post details:", error);
@@ -27,7 +27,7 @@ const EditPost = () => {
     e.preventDefault();
     const updatedPost = { title, description };
     axios
-      .put(`http://localhost:5000/posts/${postId}`, updatedPost)
+      .put(`http://localhost:5000/api/post/update/${postId}`, updatedPost)
       .then((response) => {
         console.log("Post updated successfully:", response.data);
         navigate("/");

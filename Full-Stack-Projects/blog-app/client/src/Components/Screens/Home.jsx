@@ -9,10 +9,10 @@ const Home = () => {
 
   const getData = () => {
     axios
-      .get("http://localhost:5000/posts")
+      .get("http://localhost:5000/api/post/get")
       .then((res) => {
-        setAllPosts(res.data);
-        // console.log(res.data);
+        setAllPosts(res?.data?.posts);
+        // console.log(res.data.posts);
         setMessage("");
       })
       .catch(() => {
@@ -28,7 +28,7 @@ const Home = () => {
 
   const handleDelete = (postId) => {
     axios
-      .delete(`http://localhost:5000/posts/${postId}`)
+      .delete(`http://localhost:5000/api/post/delete/${postId}`)
       .then((res) => {
         console.log("Post deleted successfully:", res.data);
         // Refresh the list of posts after deletion
@@ -46,7 +46,7 @@ const Home = () => {
       {allPosts.map((post) => (
         <div
           className="relative bg-[#D6F4ED] p-4 lg:p-6 rounded-lg shadow-md h-52 md:h-64 lg:h-92 xl:h-72"
-          key={post.id}
+          key={post._id}
         >
           <h2 className="text-lg md:text-xl lg:text-2xl font-bold mb-4">
             {post.title}
@@ -56,7 +56,7 @@ const Home = () => {
             {post.description.length > 150 && (
               <span
                 className="text-blue-800 underline cursor-pointer"
-                onClick={() => navigate(`/post-details/${post.id}`)}
+                onClick={() => navigate(`/post-details/${post._id}`)}
               >
                 ...read more
               </span>
@@ -66,13 +66,13 @@ const Home = () => {
           <div className="flex justify-between absolute bottom-3 w-[90%] mt-4">
             <button
               className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer"
-              onClick={() => navigate(`/edit-post/${post.id}`)}
+              onClick={() => navigate(`/edit-post/${post._id}`)}
             >
               Edit
             </button>
             <button
               className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer"
-              onClick={() => handleDelete(post.id)}
+              onClick={() => handleDelete(post._id)}
             >
               Delete
             </button>

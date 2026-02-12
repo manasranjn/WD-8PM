@@ -5,16 +5,16 @@ import { useNavigate, useParams } from "react-router-dom";
 const PostDetails = () => {
   const navigate = useNavigate();
   const params = useParams();
-  // console.log(params.id);
+  console.log(params.id);
   const postId = params.id;
 
   const [post, setPost] = useState({});
 
   const getPostDetails = () => {
     axios
-      .get(`http://localhost:5000/posts/${postId}`)
+      .get(`http://localhost:5000/api/post/getById/${postId}`)
       .then((response) => {
-        setPost(response.data);
+        setPost(response.data.post);
         // console.log(response.data);
       })
       .catch((error) => {
