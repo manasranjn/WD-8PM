@@ -23,6 +23,9 @@ const articleSchema = new mongoose.Schema({
         required: true,
         enum: ['Technology', 'Business', 'Daily News', 'Stocks']
     }
-})
+},
+    {
+        timestamps: true
+    })
 
 module.exports = mongoose.model('Article', articleSchema)
