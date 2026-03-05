@@ -1,4 +1,3 @@
-const { log } = require('console')
 const path = require('path') //inbuilt module of nodejs
 // console.log(path);
 

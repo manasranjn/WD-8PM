@@ -1,76 +1,146 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Courses = () => {
-  const courses = [
-    {
-      id: 1,
-      title: "HTML & CSS Fundamentals",
-      category: "Frontend",
-      level: "Beginner",
-      duration: "10 hours",
-      price: 0,
-    },
-    {
-      id: 2,
-      title: "JavaScript Basics to Advanced",
-      category: "Frontend",
-      level: "Beginner to Intermediate",
-      duration: "20 hours",
-      price: 999,
-    },
-    {
-      id: 3,
-      title: "React.js Complete Guide",
-      category: "Frontend",
-      level: "Intermediate",
-      duration: "18 hours",
-      price: 1499,
-    },
-    {
-      id: 4,
-      title: "Node.js & Express",
-      category: "Backend",
-      level: "Intermediate",
-      duration: "15 hours",
-      price: 1299,
-    },
-    {
-      id: 5,
-      title: "MERN Stack Development",
-      category: "Full Stack",
-      level: "Advanced",
-      duration: "40 hours",
-      price: 2999,
-    },
-  ];
+  const [allCourses, setAllCourses] = useState([]);
+  const [filteredCourses, setFilteredCourses] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+
+  const getCourses = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/api/course/get");
+
+      const courses = res.data.data;
+
+      setAllCourses(courses);
+      setFilteredCourses(courses);
+
+      // Extract unique categories
+      const uniqueCategories = [
+        "All",
+        ...new Set(courses.map((course) => course.category)),
+      ];
+
+      setCategories(uniqueCategories);
+      setLoading(false);
+    } catch (err) {
+      setError("Failed to fetch courses");
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getCourses();
+  }, []);
+
+  const handleFilter = (category) => {
+    setActiveCategory(category);
+
+    if (category === "All") {
+      setFilteredCourses(allCourses);
+    } else {
+      const filtered = allCourses.filter(
+        (course) => course.category === category,
+      );
+      setFilteredCourses(filtered);
+    }
+  };
 
   return (
-    <div className="p-4 md:p-8 xl:p-12">
-      <div>
-        <h3 className="text-2xl md:text-3xl xl:text-5xl font-semibold">
-          All Courses
-        </h3>
+    <div className="px-4 md:px-10 xl:px-20 py-10">
+      {/* Title */}
+      <h2 className="text-3xl md:text-4xl font-bold mb-8">
+        {error ? <span className="text-red-500">{error}</span> : "All Courses"}
+      </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 py-6">
-          {courses.map((course) => (
+      {/* Filter Section */}
+      <div className="flex flex-wrap gap-3 mb-10">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => handleFilter(cat)}
+            className={`px-4 py-2 rounded-full border transition-all cursor-pointer duration-300
+              ${
+                activeCategory === cat
+                  ? "bg-[#15beb3] text-white border-[#15beb3]"
+                  : "bg-white text-gray-700 border-gray-300 hover:bg-[#15beb3] hover:text-white"
+              }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Loading Skeleton */}
+      {loading && (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          {[1, 2, 3].map((item) => (
             <div
-              key={course.id}
-              className="bg-[#c1dfff] rounded shadow p-4 flex flex-col gap-2"
+              key={item}
+              className="h-64 bg-gray-200 rounded-2xl animate-pulse"
+            ></div>
+          ))}
+        </div>
+      )}
+
+      {/* Course Cards */}
+      {!loading && (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          {filteredCourses.map((course) => (
+            <div
+              key={course._id}
+              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group"
             >
-              <h4 className="text-lg md:textxl xl:text-2xl font-bold">
-                {course.title}
-              </h4>
-              <p>Category: {course.category}</p>
-              <p>Level: {course.level}</p>
-              <p>Duration: {course.duration}</p>
-              <p>Price: {course.price}</p>
-              <button className="px-6 py-2 rounded-lg bg-[#15beb3] text-white font-semibold cursor-pointer">
-                Check Details
-              </button>
+              {/* Image (if backend has images field) */}
+              {course.images && (
+                <div className="overflow-hidden">
+                  <img
+                    src={course.images}
+                    alt={course.title}
+                    className="h-48 w-full object-cover group-hover:scale-105 transition duration-500"
+                  />
+                </div>
+              )}
+
+              <div className="p-6 flex flex-col gap-3">
+                <h3 className="text-xl font-bold group-hover:text-[#15beb3] transition">
+                  {course.title}
+                </h3>
+
+                <p className="text-sm text-gray-500">
+                  Category: {course.category}
+                </p>
+
+                <p className="text-sm text-gray-500">Level: {course.level}</p>
+
+                <p className="text-sm text-gray-500">
+                  Duration: {course.duration}
+                </p>
+
+                <div className="flex justify-between items-center mt-2">
+                  <span className="text-lg font-bold text-[#15beb3]">
+                    {course.price === 0 ? "Free" : `₹${course.price}`}
+                  </span>
+
+                  <button
+                    onClick={() => navigate(`/course/${course._id}`)}
+                    className="cursor-pointer px-4 py-2 rounded-lg bg-[#15beb3] text-white font-semibold hover:bg-[#129e96]"
+                  >
+                    Check Details
+                  </button>
+                </div>
+              </div>
             </div>
           ))}
         </div>
-      </div>
+      )}
     </div>
   );
 };

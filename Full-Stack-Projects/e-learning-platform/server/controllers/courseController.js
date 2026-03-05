@@ -46,8 +46,6 @@ exports.createCourse = async (req, res) => {
     }
 }
 
-
-
 //! Get All Courses
 exports.getCourses = async (req, res) => {
     try {

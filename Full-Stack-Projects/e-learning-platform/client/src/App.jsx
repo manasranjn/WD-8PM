@@ -6,6 +6,8 @@ import Courses from "./Screens/Courses";
 import Navbar from "./Components/Common/Navbar";
 import Footer from "./Components/Common/Footer";
 import Blogs from "./Screens/Blogs";
+import BlogDetails from "./Screens/BlogDetails";
+import CourseDetails from "./Screens/CourseDetails";
 
 const App = () => {
   return (
@@ -17,6 +19,8 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blog/:id" element={<BlogDetails />} />
+          <Route path="/course/:id" element={<CourseDetails />} />
         </Routes>
         <Footer />
       </BrowserRouter>

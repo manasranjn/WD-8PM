@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import images from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -32,11 +32,11 @@ const Login = () => {
       .post("http://localhost:5000/api/auth/login", data)
       .then((res) => {
         // console.log(res.data);
+        localStorage.setItem("token", res.data.token); // store token
         navigate("/");
         setError("");
       })
       .catch((err) => {
-        console.log(err.message);
         setError("Invalid Credentials");
       });
   };
@@ -59,6 +59,7 @@ const Login = () => {
       .post("http://localhost:5000/api/auth/register", data)
       .then((res) => {
         // console.log(res.data);
+        localStorage.setItem("token", res.data.token);
         navigate("/");
         setError("");
       })
