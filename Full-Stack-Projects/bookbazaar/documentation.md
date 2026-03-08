@@ -171,7 +171,6 @@ Admin dashboard pages:
         |   |-- Common
         |   |   |-- NotFound.jsx
         |   |   |-- Login.jsx
-        |   |   |-- Register.jsx
         |
         |-- layouts
         |   |-- AdminLayout.jsx
@@ -186,36 +185,36 @@ Admin dashboard pages:
 ## Backend (Express)
 
     server
-    │
-    ├── config
-    │   └── db.js
-    │
-    ├── models
-    │   ├── User.js
-    │   ├── Book.js
-    │   ├── Category.js
-    │   ├── Order.js
-    │   └── Cart.js
-    │
-    ├── routes
-    │   ├── authRoutes.js
-    │   ├── bookRoutes.js
-    │   ├── categoryRoutes.js
-    │   ├── orderRoutes.js
-    │   └── cartRoutes.js
-    │
-    ├── controllers
-    │   ├── authController.js
-    │   ├── bookController.js
-    │   ├── categoryController.js
-    │   ├── orderController.js
-    │   └── cartController.js
-    │
-    ├── middleware
-    │   ├── authMiddleware.js
-    │   └── adminMiddleware.js
-    │
-    └── server.js
+    |
+    |-- config
+    |   |-- db.js
+    |
+    |-- models
+    |   |-- User.js
+    |   |-- Book.js
+    |   |-- Category.js
+    |   |-- Order.js
+    |   |-- Cart.js
+    |
+    |-- routes
+    |   |-- authRoutes.js
+    |   |-- bookRoutes.js
+    |   |-- categoryRoutes.js
+    │   |-- orderRoutes.js
+    │   |-- cartRoutes.js
+    |
+    |-- controllers
+    |   |-- authController.js
+    |   |-- bookController.js
+    |   |-- categoryController.js
+    |   |-- orderController.js
+    |   |-- cartController.js
+    |
+    |-- middleware
+    |   |-- authMiddleware.js
+    |   |-- adminMiddleware.js
+    |
+    |-- server.js
 
 # 10. Database Design (MongoDB)
 
