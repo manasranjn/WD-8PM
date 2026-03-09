@@ -56,8 +56,8 @@ exports.getBooks = async (req, res) => {
 //! GET BOOK BY ID
 exports.getBookById = async (req, res) => {
     try {
-
-        const book = await Book.findById(req.params.id).populate("category");
+        const id = req.params.id
+        const book = await Book.findById(id).populate("category");
 
         if (!book) {
             return res.status(404).json({
@@ -84,9 +84,9 @@ exports.getBookById = async (req, res) => {
 //! UPDATE BOOK
 exports.updateBook = async (req, res) => {
     try {
-
+        const id = req.params.id
         const updatedBook = await Book.findByIdAndUpdate(
-            req.params.id,
+            id,
             req.body,
             { new: true }
         );

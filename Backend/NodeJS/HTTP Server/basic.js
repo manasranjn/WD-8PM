@@ -12,7 +12,7 @@ const server = http.createServer((req, res) => {
     //* Set response header and status code
     res.writeHead(200, { "Content-Type": "text/plain" });
     //* Send response to client
-    res.end("Hello, welcome to my Node.js server!");
+    res.end("Hello, this is my first server!");
 });
 
 //! Step 3: Define port
