@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import assets from "../../assets/assets.js";
+import Login from "../../pages/Common/Login.jsx";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
@@ -86,12 +88,12 @@ const Navbar = () => {
 
           {/* Login */}
 
-          <Link
-            to="/login"
-            className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+          <button
+            className="bg-indigo-600 cursor-pointer text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+            onClick={() => setIsModalOpen(true)}
           >
             Login
-          </Link>
+          </button>
         </div>
 
         {/* Mobile Menu Icon */}
@@ -146,6 +148,8 @@ const Navbar = () => {
           </ul>
         </div>
       )}
+
+      <Login isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </nav>
   );
 };

@@ -47,7 +47,7 @@ const Hero = () => {
           <img
             src={assets.image1}
             alt="books"
-            className="w-100 rounded-xl md:w-125 drop-shadow-xl"
+            className="w-full rounded-xl drop-shadow-xl"
           />
         </div>
       </div>

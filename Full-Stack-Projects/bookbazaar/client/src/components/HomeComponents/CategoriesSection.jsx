@@ -13,7 +13,7 @@ const CategoriesSection = () => {
   return (
     <section className="bg-gray-50 py-10">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 data-aos="fade-up" className="text-3xl font-bold text-center mb-12">
+        <h2 data-aos="fade-up" className="text-3xl font-bold text-center mb-6">
           Browse Categories
         </h2>
 

@@ -13,9 +13,6 @@ import BookDetails from "../pages/User/BookDetails";
 import Cart from "../pages/User/Cart";
 import OrderHistory from "../pages/User/OrderHistory";
 
-//! AUTH
-import Login from "../pages/Common/Login";
-
 //! ADMIN
 import Dashboard from "../pages/Admin/Dashboard";
 import ManageBooks from "../pages/Admin/ManageBooks";
@@ -54,9 +51,6 @@ const AppRoutes = () => {
           }
         />
       </Route>
-
-      {/* AUTH */}
-      <Route path="/login" element={<Login />} />
 
       {/* ADMIN ROUTES */}
       <Route

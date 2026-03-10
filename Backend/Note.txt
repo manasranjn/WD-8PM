@@ -188,7 +188,7 @@ COMMON HTTP STATUS CODE
 
 
 Express :
-Express is a light weight nodejs framework design to make the development of server side applications straight forward by providing inbuilt methods for routing ,handling http request/response and intigrating middle ware easily
+--Express is a light weight nodejs framework design to make the development of server side applications straight forward by providing inbuilt methods for routing, handling http request/response and intigrating middle ware easily
 --Express is a minimalist web application framework built on nodejs which is primarily use to simplify the process of creating web servers.
 --Express is flexible and fast which enables developers to built both small and large applications.
 --It is commonly used to create APIs, web application and handling various http methods.
@@ -199,7 +199,7 @@ Use of Express :
 --Organises functionality with middleware for tasks like authentication, login, and errorhandling
 --It allows rapid development of scalable and maintainable web application
 
-Differences between Express and nodejs
+Differences between Express.js and Node.js
 --Routing :(NodeJS) -> In nodejs manual setup mode code require
            (Express) -> Clean and builtIn routing system
 
@@ -214,7 +214,7 @@ HOW to create an Express project ?
 --And then Install the Express package using npm
 --After that we have to setup our application step by step
 
-Route of create and express project
+Steps to create an express project
 step 1 -Initialize project 
 Open terminal and run the command to initialize npm 
 -> npm init -y

@@ -16,7 +16,7 @@ const FeaturedBooks = () => {
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-10">
-      <h2 data-aos="fade-up" className="text-3xl font-bold text-center mb-12">
+      <h2 data-aos="fade-up" className="text-3xl font-bold text-center mb-6">
         Featured Books
       </h2>
 
