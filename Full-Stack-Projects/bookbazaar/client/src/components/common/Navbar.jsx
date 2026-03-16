@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import assets from "../../assets/assets.js";
 import Login from "../../pages/Common/Login.jsx";
@@ -7,24 +7,38 @@ import Login from "../../pages/Common/Login.jsx";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const [dropdown, setDropdown] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) setUser(storedUser);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setUser(null);
+    navigate("/");
+  };
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
-
         <Link to="/">
           <img src={assets.logo} alt="logo" className="h-10" />
         </Link>
 
         {/* Desktop Menu */}
-
         <ul className="hidden lg:flex space-x-8 text-gray-700 font-medium">
           <li>
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? "text-indigo-600 transition font-semibold" : ""
+                isActive ? "text-indigo-600 font-semibold" : ""
               }
             >
               Home
@@ -35,7 +49,7 @@ const Navbar = () => {
             <NavLink
               to="/books"
               className={({ isActive }) =>
-                isActive ? "text-indigo-600 transition font-semibold" : ""
+                isActive ? "text-indigo-600 font-semibold" : ""
               }
             >
               Books
@@ -46,7 +60,7 @@ const Navbar = () => {
             <NavLink
               to="/categories"
               className={({ isActive }) =>
-                isActive ? "text-indigo-600 transition font-semibold" : ""
+                isActive ? "text-indigo-600 font-semibold" : ""
               }
             >
               Categories
@@ -57,7 +71,7 @@ const Navbar = () => {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                isActive ? "text-indigo-600 transition font-semibold" : ""
+                isActive ? "text-indigo-600 font-semibold" : ""
               }
             >
               About
@@ -66,10 +80,8 @@ const Navbar = () => {
         </ul>
 
         {/* Right Section */}
-
         <div className="hidden lg:flex items-center space-x-6">
           {/* Search */}
-
           <input
             type="text"
             placeholder="Search books..."
@@ -77,27 +89,57 @@ const Navbar = () => {
           />
 
           {/* Cart */}
-
           <Link to="/cart" className="relative">
             <FaShoppingCart className="text-xl text-gray-700 hover:text-indigo-600 transition" />
-
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded-full">
               0
             </span>
           </Link>
 
-          {/* Login */}
+          {/* Auth Section */}
 
-          <button
-            className="bg-indigo-600 cursor-pointer text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
-            onClick={() => setIsModalOpen(true)}
-          >
-            Login
-          </button>
+          {!user ? (
+            <button
+              className="bg-indigo-600 cursor-pointer text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Login
+            </button>
+          ) : (
+            <div className="relative">
+              {/* Avatar */}
+              <div
+                onClick={() => setDropdown(!dropdown)}
+                className="w-10 h-10 cursor-pointer flex items-center justify-center bg-indigo-600 text-white rounded-full font-bold"
+              >
+                {user.name.charAt(0).toUpperCase()}
+              </div>
+
+              {/* Dropdown */}
+              {dropdown && (
+                <div className="absolute right-0 mt-3 w-40 bg-white shadow-lg rounded-lg border">
+                  {user.role === "admin" && (
+                    <button
+                      onClick={() => navigate("/admin")}
+                      className="block rounded-t-lg cursor-pointer w-full text-left px-4 py-2 hover:bg-gray-100"
+                    >
+                      Dashboard
+                    </button>
+                  )}
+
+                  <button
+                    onClick={handleLogout}
+                    className={`${user.role === "admin" ? "" : "rounded-t-lg"} block w-full rounded-b-lg cursor-pointer text-left px-4 py-2 hover:bg-gray-100 text-red-500`}
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Mobile Menu Icon */}
-
         <div className="lg:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
@@ -106,7 +148,6 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-
       {menuOpen && (
         <div className="lg:hidden bg-white shadow-md px-6 pb-6">
           <ul className="flex flex-col space-y-4 text-gray-700 font-medium">
@@ -137,12 +178,6 @@ const Navbar = () => {
             <li>
               <Link to="/cart" onClick={() => setMenuOpen(false)}>
                 Cart
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/login" onClick={() => setMenuOpen(false)}>
-                Login
               </Link>
             </li>
           </ul>
