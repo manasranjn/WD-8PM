@@ -66,9 +66,31 @@ exports.getUserOrders = async (req, res) => {
 };
 
 
+exports.getAllOrders = async (req, res) => {
+    try {
+        const orders = await Order.find()
+            .populate("userId", "name email")
+            .populate("items.bookId", "title price image");
+
+        res.status(200).json({
+            success: true,
+            data: orders
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Failed to fetch orders",
+            error: error.message
+        });
+    }
+};
+
+
 /**
  ADMIN UPDATE ORDER STATUS
 */
+
 exports.updateOrderStatus = async (req, res) => {
     try {
 

@@ -21,6 +21,7 @@ import ManageOrders from "../pages/Admin/ManageOrders";
 import ManageUsers from "../pages/Admin/ManageUsers";
 
 import NotFound from "../pages/Common/NotFound";
+import Order from "../pages/User/Order";
 
 const AppRoutes = () => {
   return (
@@ -46,7 +47,7 @@ const AppRoutes = () => {
           path="/orders"
           element={
             <ProtectedRoutes>
-              <OrderHistory />
+              <Order />
             </ProtectedRoutes>
           }
         />
@@ -61,7 +62,7 @@ const AppRoutes = () => {
           </ProtectedRoutes>
         }
       >
-        <Route index element={<Dashboard />} />
+        <Route path="dashboard" element={<Dashboard />} />
         <Route path="books" element={<ManageBooks />} />
         <Route path="categories" element={<ManageCategories />} />
         <Route path="orders" element={<ManageOrders />} />

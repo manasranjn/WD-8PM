@@ -84,11 +84,10 @@ exports.getBookById = async (req, res) => {
 //! UPDATE BOOK
 exports.updateBook = async (req, res) => {
     try {
-        const id = req.params.id
         const updatedBook = await Book.findByIdAndUpdate(
-            id,
-            req.body,
-            { new: true }
+            req.params.id,
+            { ...req.body },
+            { new: true, runValidators: true }
         );
 
         res.status(200).json({

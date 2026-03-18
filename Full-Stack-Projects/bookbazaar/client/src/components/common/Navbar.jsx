@@ -3,6 +3,7 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import assets from "../../assets/assets.js";
 import Login from "../../pages/Common/Login.jsx";
+import { useCart } from "../../context/CartContext";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,6 +12,8 @@ const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
 
   const navigate = useNavigate();
+
+  const { cartCount } = useCart();
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -92,7 +95,7 @@ const Navbar = () => {
           <Link to="/cart" className="relative">
             <FaShoppingCart className="text-xl text-gray-700 hover:text-indigo-600 transition" />
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded-full">
-              0
+              {cartCount}
             </span>
           </Link>
 
@@ -120,7 +123,7 @@ const Navbar = () => {
                 <div className="absolute right-0 mt-3 w-40 bg-white shadow-lg rounded-lg border">
                   {user.role === "admin" && (
                     <button
-                      onClick={() => navigate("/admin")}
+                      onClick={() => navigate("/admin/dashboard")}
                       className="block rounded-t-lg cursor-pointer w-full text-left px-4 py-2 hover:bg-gray-100"
                     >
                       Dashboard
