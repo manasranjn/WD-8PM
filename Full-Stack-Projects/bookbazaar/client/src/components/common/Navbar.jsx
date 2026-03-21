@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import assets from "../../assets/assets.js";
@@ -12,6 +12,7 @@ const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
 
   const navigate = useNavigate();
+  const dropdownRef = useRef();
 
   const { cartCount } = useCart();
 
@@ -26,6 +27,20 @@ const Navbar = () => {
     setUser(null);
     navigate("/");
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
@@ -59,7 +74,7 @@ const Navbar = () => {
             </NavLink>
           </li>
 
-          <li>
+          {/* <li>
             <NavLink
               to="/categories"
               className={({ isActive }) =>
@@ -68,7 +83,7 @@ const Navbar = () => {
             >
               Categories
             </NavLink>
-          </li>
+          </li> */}
 
           <li>
             <NavLink
@@ -120,7 +135,10 @@ const Navbar = () => {
 
               {/* Dropdown */}
               {dropdown && (
-                <div className="absolute right-0 mt-3 w-40 bg-white shadow-lg rounded-lg border">
+                <div
+                  className="absolute right-0 mt-3 w-40 bg-white shadow-lg rounded-lg border"
+                  ref={dropdownRef}
+                >
                   {user.role === "admin" && (
                     <button
                       onClick={() => navigate("/admin/dashboard")}
@@ -131,8 +149,14 @@ const Navbar = () => {
                   )}
 
                   <button
+                    onClick={() => navigate("/order-history")}
+                    className={`${user.role === "admin" ? "rounded-none" : "rounded-t-lg"} block w-full cursor-pointer text-left px-4 py-2 hover:bg-gray-100`}
+                  >
+                    Order History
+                  </button>
+                  <button
                     onClick={handleLogout}
-                    className={`${user.role === "admin" ? "" : "rounded-t-lg"} block w-full rounded-b-lg cursor-pointer text-left px-4 py-2 hover:bg-gray-100 text-red-500`}
+                    className=" block w-full rounded-b-lg cursor-pointer text-left px-4 py-2 hover:bg-gray-100 text-red-500"
                   >
                     Logout
                   </button>
@@ -166,11 +190,11 @@ const Navbar = () => {
               </Link>
             </li>
 
-            <li>
+            {/* <li>
               <Link to="/categories" onClick={() => setMenuOpen(false)}>
                 Categories
               </Link>
-            </li>
+            </li> */}
 
             <li>
               <Link to="/about" onClick={() => setMenuOpen(false)}>

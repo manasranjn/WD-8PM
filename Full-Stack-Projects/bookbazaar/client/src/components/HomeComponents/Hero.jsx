@@ -29,12 +29,12 @@ const Hero = () => {
               Browse Books
             </Link>
 
-            <Link
+            {/* <Link
               to="/categories"
               className="border border-indigo-600 text-indigo-600 px-6 py-3 rounded-lg hover:bg-indigo-600 hover:text-white transition text-center"
             >
               Explore Categories
-            </Link>
+            </Link> */}
           </div>
         </div>
 

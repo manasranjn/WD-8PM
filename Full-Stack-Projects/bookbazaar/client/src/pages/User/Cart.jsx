@@ -42,7 +42,10 @@ const Cart = () => {
             </div>
 
             {/* Quantity */}
-            <span className="font-medium">Qty: {item.quantity}</span>
+            <span className="font-medium">
+              Qty:{" "}
+              <input type="number" value={item.quantity} className="w-10" />
+            </span>
           </div>
         ))}
 

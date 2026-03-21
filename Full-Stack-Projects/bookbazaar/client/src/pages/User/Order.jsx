@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
@@ -11,16 +11,25 @@ const Order = () => {
 
   const token = localStorage.getItem("token");
 
+  // 🔹 Load cart on mount
+  useEffect(() => {
+    fetchCart();
+  }, []);
+
   // 🔹 Place Order
   const placeOrder = async () => {
     try {
+      if (!token) {
+        return alert("Please login first ❌");
+      }
+
       if (!cart || cart.items.length === 0) {
         return alert("Cart is empty ❌");
       }
 
       setLoading(true);
 
-      await axios.post(
+      const res = await axios.post(
         "http://localhost:5000/api/orders",
         {},
         {
@@ -30,25 +39,26 @@ const Order = () => {
         },
       );
 
-      alert("Order placed successfully ✅");
+      alert(res.data.message || "Order placed successfully ✅");
 
-      fetchCart();
+      await fetchCart(); // refresh cart after order
 
       navigate("/");
     } catch (error) {
-      console.error(error);
-      alert("Order failed ❌");
+      console.error("ORDER ERROR:", error.response?.data || error.message);
+
+      alert(error.response?.data?.message || "Order failed ❌");
     } finally {
       setLoading(false);
     }
   };
 
-  // 🔹 Calculate total
+  // 🔹 Safe total calculation
   const totalPrice =
-    cart?.items?.reduce(
-      (total, item) => total + item.bookId.price * item.quantity,
-      0,
-    ) || 0;
+    cart?.items?.reduce((total, item) => {
+      const price = item?.bookId?.price || 0;
+      return total + price * item.quantity;
+    }, 0) || 0;
 
   return (
     <section className="max-w-4xl mx-auto px-6 py-16">
@@ -66,10 +76,10 @@ const Order = () => {
                 className="flex justify-between border-b pb-2"
               >
                 <span>
-                  {item.bookId.title} × {item.quantity}
+                  {item?.bookId?.title || "Book"} × {item.quantity}
                 </span>
 
-                <span>₹ {item.bookId.price * item.quantity}</span>
+                <span>₹ {(item?.bookId?.price || 0) * item.quantity}</span>
               </div>
             ))}
           </div>

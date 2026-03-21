@@ -12,6 +12,7 @@ import Books from "../pages/User/Books";
 import BookDetails from "../pages/User/BookDetails";
 import Cart from "../pages/User/Cart";
 import OrderHistory from "../pages/User/OrderHistory";
+import Order from "../pages/User/Order";
 
 //! ADMIN
 import Dashboard from "../pages/Admin/Dashboard";
@@ -21,7 +22,6 @@ import ManageOrders from "../pages/Admin/ManageOrders";
 import ManageUsers from "../pages/Admin/ManageUsers";
 
 import NotFound from "../pages/Common/NotFound";
-import Order from "../pages/User/Order";
 
 const AppRoutes = () => {
   return (
@@ -48,6 +48,14 @@ const AppRoutes = () => {
           element={
             <ProtectedRoutes>
               <Order />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/order-history"
+          element={
+            <ProtectedRoutes>
+              <OrderHistory />
             </ProtectedRoutes>
           }
         />
