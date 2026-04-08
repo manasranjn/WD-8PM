@@ -172,7 +172,7 @@ switch (expression) {
 When we have to run the same set of instruction over and over again, each time with a different or with same value then we use loops.
 
 ## for loop:-
-- for loops provides concise way of writting the loop structure containing initializaton, condition, and iteration in one line.
+- for loops provides concise way of writing the loop structure containing initialization, condition, and iteration in one line.
 -A for loop repeats until a specified condition evaluates to false.
 Syntax:-
 for(initializaton; condition; iteration){
@@ -568,10 +568,10 @@ syntax :- let promise = new Promise((resolve, reject) => { // statement })
 
 -Promise have 3 stages:-
 1)pending - The initial stage of promise
-2)resolve - The response is successfull
+2)resolve - The response is successful
 3)reject - Response is failed
 
--If the response is successfull then promise accepts the response using .then() block.
+-If the response is successful then promise accepts the response using .then() block.
 Syntax:- promise.then((res) => {......})
 -If the response is failed then promise uses .catch() block.
 Syntax:- promise.catch((err) => {......})

@@ -85,7 +85,7 @@ Pre-defined texts used inside the body of the html document.
 Multimedia tags are used to add images, videos, audio, etc. in HTML.
 
 ## Image Tag:-
--<img> tag is used to display a image on a web page.
+-<img> tag is used to display an image on a web page.
 -Attributes/Properties:-
 1. src:- It is used to specify the source of the image.
 2. alt:- It is used to specify the alternative text of the image.
