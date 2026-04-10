@@ -96,9 +96,6 @@ e.g: user.save()
 -Install and start mongo db in your machine by default it listen on local host port number 27017.according to the port number the typical connection string looks like mongodb://localhost:27017/dataBasename
 
 
-mongodb+srv://manasranjanbera:u8uWFJKVSLYOnYoS@server1.wgkspjs.mongodb.net/?appName=Server1
-mongodb+srv://user1:DAgT1ZQPhguJOhs5@server1.wgkspjs.mongodb.net/?appName=Server1
-
 #CLUSTER:-
 ----------
 -A mongodb cluster is a mongodb server that provides features like readundency, availability and scalibility.

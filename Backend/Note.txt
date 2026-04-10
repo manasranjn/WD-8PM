@@ -38,7 +38,7 @@ Node JS Architecture :
 --Instead callback, promise, async await and else completion.
 
 Node REPL(Read-Evaluate-Print-Loop)
---It is an interactive shell in NodeJS, that allows to execute JavaScript code line by line and see immediate results.
+--It is an interactive shell in Node.js, that allows to execute JavaScript code line by line and see immediate results.
 --It is useful for quick testing, debugging and learning where JavaScript code can be experimented with directly.
 
 How it Works ?
@@ -51,7 +51,7 @@ How it Works ?
 --And to clear Environment (.clear)
 
 Module :
---A module in NodeJS is self contained unit of code placed in a file or folder ,capable of exporting functionality for use elsewhere.
+--A module in Node.js is self contained unit of code placed in a file or folder ,capable of exporting functionality for use elsewhere.
 --Modules prevent global name space pollution help organising code and improve maintainability
 
 There are three types of modules
@@ -60,9 +60,9 @@ There are three types of modules
 3-External Modules - Installed via npm and stored in'node_modules'folder
 
 
-Modules in NodeJS:-
---Node uses a powerful module system to help organise code, promote reuse and encapsulate functionality of node js application structure.
---There are two primary systems in nodejs
+Modules in Node.js:-
+--Node uses a powerful module system to help organise code, promote reuse and encapsulate functionality of Node.js application structure.
+--There are two primary systems in Node.js
  1.CommonJS Modules and
  2.ES6/ECMA Script Modules
 
@@ -77,7 +77,7 @@ ES6/ECMA Script Modules:-
 --we have to use type -> module in package.js to enable ES6.
 
 Node.js path module :
---The node js path module is a built in module used to work with files and directory across different operating system ,allowing seamless cross platform development and file manipulation task.
+--The Node.js path module is a built in module used to work with files and directory across different operating system ,allowing seamless cross platform development and file manipulation task.
 --path module helps handle differences in path format between operating system
 --it is used for manipulating ,joining,resolving,and normalising path  in model  application
 
@@ -88,14 +88,14 @@ Path Module: (method)
 -> path.extname():- It returns the file extension.
 -> path.isAbsolute():- It checks path is absolute or not.
 
---To use path module in NodeJS, we have to import it .
+--To use path module in Node.js, we have to import it .
 
-NodeJS FileSystem(fs):
---NodeJS filesystem(fs) module enables file and directory I/O operations offering both sysnchronous and asynchronous methods to handle files efficiently in different scenario.
+Node.js FileSystem(fs):
+--Node.js filesystem(fs) module enables file and directory I/O operations offering both sysnchronous and asynchronous methods to handle files efficiently in different scenario.
 
 Use of fs module :
---The NodeJs fs module is a core part of NodeJS, that allows programm to interact with the computer's filesystem.
---Its primary use is to perform essential file and diectory Operations such as reading writting creating deleting and monitoring files. 
+--The Node.js fs module is a core part of Node.js, that allows programm to interact with the computer's filesystem.
+--Its primary use is to perform essential file and diectory Operations such as reading writing creating deleting and monitoring files. 
 
 Synchronous Method :
 --Sysnchronous method block execution until the operation completes, making other process wait, which can be inefficient for I/O bound task.
@@ -119,18 +119,18 @@ Asynchronous Method :
 
 CLI(Command Line Interface):
 --CLI means interacting with your programm through the terminal instead of the browser or GUI(graphical user interface).
---In nodeJS we can create CLI tools that accept commands, arguments, options like npm or npx.
+--In Node.js we can create CLI tools that accept commands, arguments, options like npm or npx.
 
 HTTP Server(Hyper Text Transfer Protocol):
 --An HTTP server is programm that listens for request from clients and sends back response(like web page or data).
---In NodeJS we can easily create an HTTP server using the builtin HTTP module.
+--In Node.js we can easily create an HTTP server using the builtin HTTP module.
 --client or browser sends a request like URL,then server listens on a specific port no and then the server processes the request and sends back a responds like html, text or json
 
 http module ---> http server --->request --->response
          
           = request----->http server--->response
 
-Steps to create https server in nodejs :-
+Steps to create https server in Node.js :-
 Step 1: we have to import http module  either by using require() or import statement.
 
 const http=require('http')
@@ -187,31 +187,31 @@ COMMON HTTP STATUS CODE
 500 -> Internal server error -> server crashed
 
 
-Express :
---Express is a light weight nodejs framework design to make the development of server side applications straight forward by providing inbuilt methods for routing, handling http request/response and intigrating middle ware easily
---Express is a minimalist web application framework built on nodejs which is primarily use to simplify the process of creating web servers.
---Express is flexible and fast which enables developers to built both small and large applications.
+Express.js :
+--Express.js is a light weight Node.js framework design to make the development of server side applications straight forward by providing inbuilt methods for routing, handling http request/response and intigrating middle ware easily
+--Express.js is a minimalist web application framework built on Node.js which is primarily use to simplify the process of creating web servers.
+--Express.js is flexible and fast which enables developers to built both small and large applications.
 --It is commonly used to create APIs, web application and handling various http methods.
 
-Use of Express :
+Use of Express.js :
 --Built Web App and API using routing and middleware
---Reduces boilerplate code and coding time compare to VANILA nodeJS
+--Reduces boilerplate code and coding time compare to VANILA Node.js
 --Organises functionality with middleware for tasks like authentication, login, and errorhandling
 --It allows rapid development of scalable and maintainable web application
 
 Differences between Express.js and Node.js
---Routing :(NodeJS) -> In nodejs manual setup mode code require
-           (Express) -> Clean and builtIn routing system
+--Routing :(Node.js) -> In Node.js manual setup mode code require
+           (Express.js) -> Clean and builtIn routing system
 
---JSON Parsing :(NodeJS) -> manual or 3rd party
-                (Express) -> simple by using Express.json()
+--JSON Parsing :(Node.js) -> manual or 3rd party
+                (Express.js) -> simple by using Express.json()
 
---Middleware :(NodeJS) -> needs 3rd party library
-              (Express)-> BuiltIn and systematic  middleware support
+--Middleware :(Node.js) -> needs 3rd party library
+              (Express.js)-> BuiltIn and systematic  middleware support
 
-HOW to create an Express project ?
---To create an Express project firstly we need nodejs Installed with npm
---And then Install the Express package using npm
+HOW to create an Express.js project ?
+--To create an Express.js project firstly we need Node.js Installed with npm
+--And then Install the Express.js package using npm
 --After that we have to setup our application step by step
 
 Steps to create an express project
@@ -237,7 +237,7 @@ app.listen(PORT,()=>{
      console.log("Server running")
 })
 
-Understanding request and response in Express :-
+Understanding request and response in Express.js :-
 request: It represents the http request and contains data sent by the client including path parameters, query strings body data, headers and more. 
 response : It represents http response that an express app sends back to the client, it provides methods to send data like 
      res.send(), res.json(), res.status()......etc 
@@ -247,9 +247,9 @@ app.get("/",(req,res)=>{
     console.log(req.method)
 })     
 
-Routes in express:-
+Routes in Express.js:-
 --Routing defines how an applications end point respond to client requset 
---Express uses method like get(), post(), put(), delete() etc to define routes according to http methods.
+--Express.js uses method like get(), post(), put(), delete() etc to define routes according to http methods.
 --Routes consist of a path and a callback func with req and res parameters.
 --There are 2 types of routes :  normal route and parameterized route 
  for ex:-  
@@ -282,15 +282,15 @@ QUERY STRING
 --Query string are used to filtering data ,searching or providing additional parameters to a request.
 
 Route Chaining: 
---Route Chaining allows defining multiple http methods for a single route using app.rout()
---It keeps route dclarations organised especially when handling different operation on one path. 
+--Route chaining allows defining multiple http methods for a single route using app.rout()
+--It keeps route declarations organized especially when handling different operation on one path. 
 e.g app.route('/books')
     .get((req,res)=>{...})
     .post((req,res)=>{...})
     .put((req,res)=>{...})
     .delete((req,res)=>{...})
 
-JSON
+JSON:-
 --JSON stands for JavaScript object Notation.
 --It is a light weight text based data format for representig structured Data.
 --It uses key value pairs and it easy for both humans and machines to read or generate. 
@@ -309,35 +309,35 @@ Use of JSON in Web Development:-
 Q.1 What is the role of a middleware?
  It is handle req and res  between the user and server.
 
-#MiddleWare:-
--It is a function or software layer that sits between the request and response cycle in web applications in framework like Express which enable developer to add ,modify and handle functionalities for incoming request before they reach the final route handler.
+#Middleware:-
+-It is a function or software layer that sits between the request and response cycle in web applications in framework like Express.js which enable developer to add ,modify and handle functionalities for incoming request before they reach the final route handler.
 -It acts as an intermediate between frontend and backend for communication ,requesting ,handling,logging ,security and more.
 -In simpe we can say it is a function that receives request,response and the next callback as an argument which allows executing codes and make changes to request and request respond object.
 
-//Use of MiddleWare:
--MiddleWare is wideely used for tasks such as authentication,login,error handling,passing request body and adding custom headers.
--Some common built in and third party MiddleWare are expess.json(),customlogger(),course().
--MiddleWare can be applied globally by using app.use() or to specific route by using app.get()/ app.post().
+//Use of Middleware:
+-Middleware is wideely used for tasks such as authentication,login,error handling,passing request body and adding custom headers.
+-Some common built in and third party Middleware are expess.json(),customlogger(),course().
+-Middleware can be applied globally by using app.use() or to specific route by using app.get()/ app.post().
 
 #What is Next()?
--The next() in MiddleWare passes control to the other MiddleWare function in the stack.
--If a MiddleWare does not end the request respond cycle  it must call th enext() otherwise the request will hang and not be processed futher.
+-The next() in Middleware passes control to the other Middleware function in the stack.
+-If a Middleware does not end the request respond cycle  it must call th enext() otherwise the request will hang and not be processed futher.
 
-#Types of MiddleWare:-
-1)Build in MiddleWare
-2)Third-party MiddleWare
-3)custom MiddleWare
-4)Application-level MiddleWare
-5)Router-level MiddleWare
+#Types of Middleware:-
+1)Build in Middleware
+2)Third-party Middleware
+3)custom Middleware
+4)Application-level Middleware
+5)Router-level Middleware
 
 #EXPRESS ROUTER:-
 -It is a feature in express.js that allows us to create modular and mountable route handlers acting like a mini express application for specific part of API.
 -It helps us to organised routes into separates files like /users, /products, /login
 so large app stay clean ,reusable and easy to maintain.
--Express.router() create a separate router pbject or variable that can have its own routes and MiddleWare similar to the main app.
+-Express.router() create a separate router project or variable that can have its own routes and Middleware similar to the main app.
 
 #STATIC FILES IN EXPRESS:-
--Express provide a built-in MiddleWare express.static() to serve static file from a folder such as public or assest.
+-Express.js provide a built-in Middleware express.static() to serve static file from a folder such as public or assest.
 -Static file in express are files like image, css, client side javascript, pdf, etc that are sent to the browser without any server-side processing.
 -By using static() any file inside public folder becomes directly accessible by its path.
 -We can mount multiple static folders or add a url prefix like app.use('/assest',express.static('public')) to serve file under a specific route segment.

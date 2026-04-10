@@ -51,7 +51,7 @@ Q. What is Single-page Application ?
    e.g : App.jsx , App.js , Content.jsx
 
 # What is JSX ?
-- it is a combitation of JavaScript and XML (Extensible Markup Language).
+- it is a combination of JavaScript and XML (Extensible Markup Language).
 
 ## Difference between HTML and XML
 1. - In HTML we will be using an attribute as "class"
