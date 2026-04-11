@@ -29,10 +29,12 @@ will provide.
 ->MongoDB is schema flexible so diiferent document in same collection can silently and off with missing fields ,wrong times or inconsistency structure.
 
 ##Some common terms of MongoDB and mongoose
-(i)Database:-it is a container group related data in MongoDB.
+(i)Database:-it is a container, group of related data in MongoDB.
 ->one MongoDB server can host many databases each database contains multiple collections.
-(ii)Collection:-a collection is a group of document inside a database simillar to a table.
+
+(ii)Collection:-a collection is a group of document inside a database similar to a table.
 ->collection are schema flexible that is document in the same collection can have different fields and structure.
+
 (iii)Document:-the basic data record in MongoDB stored in BSON (binary JSON).
 ->a document is set of field value pairs like JSON object.
 
@@ -50,6 +52,7 @@ e.g:- const User = mongoose.model("User", userSchema);
 
 (vi)ODM(object data model):-A programming layer that maps application object to database document for MongoDB.
 ->it provides scema, model ,validation and help us for nodejs and MongoDB.
+
 (vii)_id:-it is special field that uniqly identifies each document in a collection.
 ->it is created automatically if not provided by default .
 ->it is used to serch data uniqly.
@@ -92,6 +95,7 @@ e.g: user.save()
 -Create a project and a cluster atlas that had a database user and a ip access then click "connect your application" and select the drive method .
 -Now we have to set user name ,password and db name and one it done we will click on "continue/create".
 -And then copy the uri from step 3 .
+
 2)Local MongoDB-
 -Install and start mongo db in your machine by default it listen on local host port number 27017.according to the port number the typical connection string looks like MongoDB://localhost:27017/dataBasename
 
