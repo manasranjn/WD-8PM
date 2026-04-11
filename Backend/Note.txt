@@ -124,7 +124,7 @@ CLI(Command Line Interface):
 HTTP Server(Hyper Text Transfer Protocol):
 --An HTTP server is programm that listens for request from clients and sends back response(like web page or data).
 --In Node.js we can easily create an HTTP server using the builtin HTTP module.
---client or browser sends a request like URL,then server listens on a specific port no and then the server processes the request and sends back a responds like html, text or json
+--client or browser sends a request like URL,then server listens on a specific port no and then the server processes the request and sends back a responds like HTML, text or json
 
 http module ---> http server --->request --->response
          
@@ -337,14 +337,14 @@ so large app stay clean ,reusable and easy to maintain.
 -Express.router() create a separate router project or variable that can have its own routes and Middleware similar to the main app.
 
 #STATIC FILES IN EXPRESS:-
--Express.js provide a built-in Middleware express.static() to serve static file from a folder such as public or assest.
--Static file in express are files like image, css, client side javascript, pdf, etc that are sent to the browser without any server-side processing.
+-Express.js provide a built-in Middleware express.static() to serve static file from a folder such as public or assets.
+-Static file in express are files like image, CSS, client side JavaScript, pdf, etc that are sent to the browser without any server-side processing.
 -By using static() any file inside public folder becomes directly accessible by its path.
--We can mount multiple static folders or add a url prefix like app.use('/assest',express.static('public')) to serve file under a specific route segment.
+-We can mount multiple static folders or add a url prefix like app.use('/assets',express.static('public')) to serve file under a specific route segment.
 
 #What is ejs?
--ejs stands for embedded javascript which is a template engine that lets us write html pages with javascript to generate dynamic content.
--ejs template page uses <%=variable%> to display values into html and <% %> to write javascript logic such loop, conditions inside the template file.
+-ejs stands for embedded JavaScript which is a template engine that lets us write HTML pages with JavaScript to generate dynamic content.
+-ejs template page uses <%=variable%> to display values into HTML and <% %> to write JavaScript logic such loop, conditions inside the template file.
 -To enable ejs we need to install ejs module and write the below syntax
 app.set("view engine","ejs");
 app.set("views", path.join(__dirname,"views"))
@@ -352,6 +352,6 @@ app.set("views", path.join(__dirname,"views"))
 
 #SERVER-SIDE RENDERING WITH Ejs:-
 -----------------------------------
--With server-side rendering a route handler call res.render('templateName,{data}) and ejs combine the template with the data to produce complete html page on the server.
--Ejs handle dynamic html views while express.static() serve supoorting assest like css and javascript use by the views.
+-With server-side rendering a route handler call res.render('templateName,{data}) and ejs combine the template with the data to produce complete HTML page on the server.
+-ejs handle dynamic HTML views while express.static() serve supoorting assets like CSS and JavaScript use by the views.
 -The most common structure for view folder for ejs template and public folder for static file.
